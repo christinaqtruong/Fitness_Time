@@ -21,6 +21,12 @@
 <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-database.js"></script>
 
+<!-- Moment.js library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+
+<!-- moment-duration-format plugin -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment-duration-format/1.3.0/moment-duration-format.min.js"></script>
+
 </head>
 
 <body>
@@ -29,8 +35,8 @@
 <div class="display">
 
 <!-- Displays Workout/Rest Intervals -->
-<div id="workoutInterval-display">00:00:00</div>
-<div id="restInterval-display">00:00:00</div>
+<div id="workoutInterval-display">00:00</div>
+<div id="restInterval-display">00:00</div>
 
 <!-- Button to start timer -->
 <button class="btn btn-primary" id="startTimer-btn">Start</button>
@@ -48,13 +54,13 @@
     <!-- workout interval input form -->
     <div class="form-group">
       <label for="workoutInterval">Workout Interval</label>
-      <input type="text" class="form-control" id="workoutInterval-input" placeholder="00:00:00"><small id="timeFormat" class="form-text text-muted">(HH:mm:ss)</small>
+      <input type="text" class="form-control" id="workoutInterval-input" placeholder="00:00"><small id="timeFormat" class="form-text text-muted">(mm:ss)</small>
     </div>
 
     <!-- rest interval input form -->
     <div class="form-group">
       <label for="restInterval">Rest Interval</label>
-      <input type="text" class="form-control" id="restInterval-input" placeholder="00:00:00"> <small id="timeFormat" class="form-text text-muted">(HH:mm:ss)</small>
+      <input type="text" class="form-control" id="restInterval-input" placeholder="00:00"> <small id="timeFormat" class="form-text text-muted">(mm:ss)</small>
     </div>
 
     <!-- Check to loop the intervals until stop button is pressed -->
