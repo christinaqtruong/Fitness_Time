@@ -3,6 +3,7 @@ window.onload = function(){
     //click events
     $(document).on('click', "#submit-btn", function(){
         //sends user input to firebase
+        
 
     })
 
@@ -27,8 +28,56 @@ var interval;
 
 //prevents clock from speeding up
 var clockRunning = false;
-var workoutInterval = $("#workoutInterval-input");
-var restInterval = $("#restInterval-input");
+
+var workoutInterval = "";
+var restInterval = "";
+
+// My web app's Firebase configuration
+var firebaseConfig = {
+    apiKey: "AIzaSyBKYD8IunAzx6dTWPxw9egVjiW4odHBnFw",
+    authDomain: "fitnesstime-cqmt.firebaseapp.com",
+    databaseURL: "https://fitnesstime-cqmt.firebaseio.com",
+    projectId: "fitnesstime-cqmt",
+    storageBucket: "fitnesstime-cqmt.appspot.com",
+    messagingSenderId: "334521941866",
+    appId: "1:334521941866:web:68651ef04c47065d"
+  };
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+var database = firebase.database();
+database.ref().set({ name: "James" });
+
+//clicking submit button grab input values and pushes it to firebase
+$("#submit-btn").on("click", function(event){
+event.preventDefault();
+
+workoutInterval = $("#workoutInterval-input").val().trim();
+restInterval = $("#restInterval-input").val().trim();
+
+database.ref().push({
+    workoutInterval: workoutInterval,
+    restInterval: restInterval,
+    dateAdded: firebase.database.ServerValue.TIMESTAMP
+});
+})
+
+database.ref().on("child_added", function(snapshot){
+    //stored snapshot value in a variable
+    var sv = snapshot.val();
+
+    console.log(sv.workoutInterval);
+    console.log(sv.restInterval);
+
+    //display on HTML
+    $("#workoutInterval-display").text(sv.workoutInterval);
+    $("#restInterval-display").text(sv.restInterval);
+}, function(errorObject){
+    console.log("Errors handled:" + errorObject.code);
+});
+
+
+
 
 function reset(){
 
@@ -104,18 +153,3 @@ function countdown(){
     $("#restInterval-display").text(convertedRestInterval);
 
 }
-
-
-
-// My web app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyBKYD8IunAzx6dTWPxw9egVjiW4odHBnFw",
-    authDomain: "fitnesstime-cqmt.firebaseapp.com",
-    databaseURL: "https://fitnesstime-cqmt.firebaseio.com",
-    projectId: "fitnesstime-cqmt",
-    storageBucket: "fitnesstime-cqmt.appspot.com",
-    messagingSenderId: "334521941866",
-    appId: "1:334521941866:web:68651ef04c47065d"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
