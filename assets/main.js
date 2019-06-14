@@ -27,8 +27,8 @@ var interval;
 
 //prevents clock from speeding up
 var clockRunning = false;
-var workoutInterval = 0;
-var restInterval = 0;
+var workoutInterval = $("#workoutInterval-input");
+var restInterval = $("#restInterval-input");
 
 function reset(){
 
@@ -69,9 +69,40 @@ function loopIntervals (){
     });
 }
 
+function timeConverter(t){
+    var hours = Math.floor(t)
+    var minutes = Math.floor(t/60);
+    var seconds = t - (minutes * 60);
+
+    if (seconds < 10) {
+        seconds = "0" + seconds
+    }
+
+    if (minutes === 0) {
+        minutes = "00";
+    }
+
+    else if (minutes < 10) {
+        minutes = "0" + minutes
+    }
+
+
+    return hours + ":" + minutes + ":" + seconds;
+}
+
 function countdown(){
     //decrements time 
-    
+    workoutInterval--;
+    restInterval--;
+
+    //get the current time and display it
+    var convertedWorkoutInterval = timeConverter(workoutInterval);
+    var convertedRestInterval = timeConverter(restInterval);
+
+    //display the countdown
+    $("#workoutInterval-display").text(convertedWorkoutInterval);
+    $("#restInterval-display").text(convertedRestInterval);
+
 }
 
 
