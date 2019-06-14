@@ -1,12 +1,6 @@
 //when window loads, it initiates all the functions
 window.onload = function(){
     //click events
-    $(document).on('click', "#submit-btn", function(){
-        //sends user input to firebase
-        
-
-    })
-
     $(document).on('click', "#startTimer-btn", function(){
         //starts timer
         start();
@@ -23,14 +17,6 @@ window.onload = function(){
     })
 };
 
-//variable that holds our setInterval to run the stopwatch
-var interval;
-
-//prevents clock from speeding up
-var clockRunning = false;
-
-var workoutInterval = "";
-var restInterval = "";
 
 // My web app's Firebase configuration
 var firebaseConfig = {
@@ -46,7 +32,6 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 var database = firebase.database();
-database.ref().set({ name: "James" });
 
 //clicking submit button grab input values and pushes it to firebase
 $("#submit-btn").on("click", function(event){
@@ -76,18 +61,24 @@ database.ref().on("child_added", function(snapshot){
     console.log("Errors handled:" + errorObject.code);
 });
 
+//variable that holds our setInterval to run the stopwatch
+var interval;
 
+//prevents clock from speeding up
+var clockRunning = false;
 
+var workoutInterval = "";
+var restInterval = "";
 
 function reset(){
 
     //resets time to zero
     workoutInterval = 0;
-    restInterval = 0
+    restInterval = 0;
 
     //reset the display
-    $('workoutInterval-display').text("00:00:00");
-    $('restInterval-display').text("00:00:00");
+    $('#workoutInterval-display').text("00:00:00");
+    $('#restInterval-display').text("00:00:00");
 
     //stop the music
 }
