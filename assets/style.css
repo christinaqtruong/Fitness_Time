@@ -1,11 +1,39 @@
-.container{
-    width: 550px;
-    margin: 30px auto;
-    margin-left: 950px;
+form{
+    width: fit-content;
+    margin: 10px auto;
 }
-.tracker{
-position: relative;
-width: 370px;
-height: 600px;
-border
+
+.display{
+    width: fit-content;
+    margin: 10px auto;
+    text-align: center;
 }
+a:not([href]):not([tabindex]) {
+    color:yellow;
+    font-weight: 600;
+	font-size: 40px;
+	font-family: Pacifico;
+}
+body{
+	background-image: url(https://cdn.wallpapersafari.com/96/39/7TB9Nd.jpg);
+}
+.navbar {
+	border: 5px solid;
+	border-color: rgb(91, 194, 235);
+    background-image: url(https://wallpapercave.com/wp/ClILpxL.jpg);
+    color:yellow;
+}
+.navbar:hover{
+	color: antiquewhite;
+	background-image: url(https://cdn.wallpapersafari.com/82/78/zRi7sO.jpg);
+}
+.btn{
+	background-color: rgb(233, 135, 152);
+	color: black;
+	font-family: fantasy;
+}
+#button-Holder {
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+}
+    
