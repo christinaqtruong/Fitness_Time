@@ -1,35 +1,39 @@
-
-
-body {
-    margin: 0;
-    top: 0;
-    font-family: "Arial", sans-serif;
-    background-image: url(https://www.gameplan-a.com/wp-content/uploads/fly-images/9536/jogging-freedom-workout-1440x9999.jpg)
+form{
+    width: fit-content;
+    margin: 10px auto;
 }
 
-.main-container {
-    width: 100%;
-}
-
-.container {
-    margin: 0 10%;
-}
-
-.header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: black;
-    color: white;
-}
-
-.header-text {
-    padding: 20px 0;
+.display{
+    width: fit-content;
+    margin: 10px auto;
     text-align: center;
 }
-.jumbotorn{
-    background-color: aliceblue;
-    color: black;
-    width:80%;
-    float:center;
+a:not([href]):not([tabindex]) {
+    color:yellow;
+    font-weight: 600;
+	font-size: 40px;
+	font-family: Pacifico;
 }
+body{
+	background-image: url(https://cdn.wallpapersafari.com/96/39/7TB9Nd.jpg);
+}
+.navbar {
+	border: 5px solid;
+	border-color: rgb(91, 194, 235);
+    background-image: url(https://wallpapercave.com/wp/ClILpxL.jpg);
+    color:yellow;
+}
+.navbar:hover{
+	color: antiquewhite;
+	background-image: url(https://cdn.wallpapersafari.com/82/78/zRi7sO.jpg);
+}
+.btn{
+	background-color: rgb(233, 135, 152);
+	color: black;
+	font-family: fantasy;
+}
+#button-Holder {
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+}
+    
