@@ -4,10 +4,17 @@ Roman Penn
 Nikita Mehata
 Ryley Chapman
 
-# Unit 8: Project 1
+# General Idea:
+An online timer for working out used for setting up workout and rest intervals that start and stop automatically and which can sync to music sourced from SoundCloud
 
-## Overview
-Welcome to Project 1! This is an important step in your full-stack journey as you will now use your newly acquired skills and knowledge to build web application from scratch. With your team, you will conceive and execute a design that solves a real-world problem by integrating data received from multiple server-side API requests. Because you will be working collaboratively, you will learn agile development methodologies and implement feature and bug fixes using the git branch workflow and pull requests.
+#Target Audience:
+People who use interval training as part of their workout regimen
+
+#Primary Problem:
+Interval training requires a set workout period followed by a rest interval, which requires having at least two timers set to different time durations and switching between the two. 
+
+#Primary Goal:
+This app aims to avoid having to reset the timer in order to switch between the different durations to provide a seamless transition between rest and workout periods that can be repeated automatically for the duration of the exercise.
 
 ## Key Topics
 * Server-side APIs
