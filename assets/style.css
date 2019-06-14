@@ -1,11 +1,27 @@
+/* header with image box */
 .container {
     background-color: #000000;
-    text-align: center;
-    font-weight: 50px;
     color:aqua;
-    font-weight: bold;
-    
+    text-align: center;
+}
+div.jumbotron.jumbotron-fluid {
+    background-color: black;
+}
+.img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 
+h1.display-4 {
+    font-weight: bold;
+    text-align: center;
+}
+
+
+h1.display-4:hover{
+    background-color: aqua;
+    color: black;
 }
 
 form{
