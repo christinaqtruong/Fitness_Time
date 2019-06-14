@@ -1,11 +1,35 @@
-.container{
-    width: 550px;
-    margin: 30px auto;
-    margin-left: 950px;
+
+
+body {
+    margin: 0;
+    top: 0;
+    font-family: "Arial", sans-serif;
+    background-image: url(https://www.gameplan-a.com/wp-content/uploads/fly-images/9536/jogging-freedom-workout-1440x9999.jpg)
 }
-.tracker{
-position: relative;
-width: 370px;
-height: 600px;
-border
+
+.main-container {
+    width: 100%;
+}
+
+.container {
+    margin: 0 10%;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    color: white;
+}
+
+.header-text {
+    padding: 20px 0;
+    text-align: center;
+}
+.jumbotorn{
+    background-color: aliceblue;
+    color: black;
+    width:80%;
+    float:center;
 }
