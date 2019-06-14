@@ -1,13 +1,3 @@
-$.ajax({
-    url: "https://api.napster.com/v2.2/artists/top",
-    method: "GET",
-    headers: {
-       'apikey':'MTlhZTJjNGUtZWYyZC00ZTkwLWI3M2UtOGJlYWM0OTQ0MmEw'
-   }
-}).then(function(response){
-    console.log(response);
-})
-
 
 //when window loads, it initiates all the functions
 window.onload = function(){
@@ -98,4 +88,20 @@ function countdown(){
     appId: "1:334521941866:web:68651ef04c47065d"
   };
   // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
+ firebase.initializeApp(firebaseConfig);
+
+ $("#music-button").on("click", function(event){
+    event.preventDefault()
+
+    $.ajax({
+        url: "https://api.napster.com/v2.2/artists/top",
+        method: "GET",
+        headers: {
+           'apikey':'MTlhZTJjNGUtZWYyZC00ZTkwLWI3M2UtOGJlYWM0OTQ0MmEw'
+       }
+    }).then(function(response){
+        console.log(response);
+    
+
+
+});})
