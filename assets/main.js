@@ -115,7 +115,6 @@
 
 
 // My web app's Firebase configuration
-// My web app's Firebase configuration
 var firebaseConfig = {
     apiKey: "AIzaSyBKYD8IunAzx6dTWPxw9egVjiW4odHBnFw",
     authDomain: "fitnesstime-cqmt.firebaseapp.com",
