@@ -1,5 +1,6 @@
 //when window loads, it initiates all the functions
 window.onload = function(){
+    
     //click events
     $(document).on('click', "#startTimer-btn", function(){
         //starts timer
@@ -15,7 +16,6 @@ window.onload = function(){
         //resets timer
         pause();
     })
-};
 
 
 // My web app's Firebase configuration
@@ -35,21 +35,21 @@ var database = firebase.database();
 
 //clicking submit button grab input values and pushes it to firebase
 $("#submit-btn").on("click", function(event){
-event.preventDefault();
+    event.preventDefault();
 
-workoutInterval = $("#workoutInterval-input").val().trim();
-restInterval = $("#restInterval-input").val().trim();
+    workoutInterval = $("#workoutInterval-input").val().trim();
+    restInterval = $("#restInterval-input").val().trim();
 
-console.log("workoutInterval", workoutInterval);
-console.log("restInterval", restInterval);
+    console.log("workoutInterval", workoutInterval);
+    console.log("restInterval", restInterval);
 
 
 
-database.ref().push({
-    workoutInterval: workoutInterval,
-    restInterval: restInterval,
-    dateAdded: firebase.database.ServerValue.TIMESTAMP
-});
+    database.ref().push({
+        workoutInterval: workoutInterval,
+        restInterval: restInterval,
+        dateAdded: firebase.database.ServerValue.TIMESTAMP
+    });
 });
 
 var workoutTotalSeconds;
@@ -81,8 +81,12 @@ database.ref().on("child_added", function(snapshot){
     restTotalSeconds = (restIntervalMinutes * 60) + workoutIntervalSeconds
 
     //display on HTML
-    $("#workoutInterval-display").text(sv.workoutInterval);
-    $("#restInterval-display").text(sv.restInterval);
+    if(sv.workoutInterval){
+            $("#workoutInterval-display").text(sv.workoutInterval);
+    }
+    if(sv.restInterval){
+            $("#restInterval-display").text(sv.restInterval);
+    }
 }, function(errorObject){
     console.log("Errors handled:" + errorObject.code);
 });
@@ -160,7 +164,7 @@ function timeConverter(t){
 
 var workingOut = true;
 
-function countdown(){
+function countdown() {
     if (workingOut) {
         //decrements workout interval time first, and once it hits zero, moves on to decrement the rest interval time 
         workoutTotalSeconds--;
@@ -195,4 +199,4 @@ function countdown(){
 
     }
     
-}
+}}

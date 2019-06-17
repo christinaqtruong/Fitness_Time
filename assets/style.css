@@ -1,12 +1,78 @@
+/* header with image box */
+.container {
+    background-color: #000000;
+    color:aqua;
+    text-align: center;
+}
+div.jumbotron.jumbotron-fluid {
+    background-color: black;
+    padding-bottom: 5px;
+    padding-top: 15px;
+    border-color: aqua;
+    border-style:solid;
+    border-width:5px;  
+
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body {
+    background-color: black;
+}
+.center:hover {
+    background-color: aqua;
+    color: black;
+}
+
+h1.display-4 {
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+
+h1.display-4:hover{
+    background-color: aqua;
+    color: black;  
+}
+
 form{
     width: fit-content;
     margin: 10px auto;
+}
+
+.form-group {
+    color: aqua;
+}
+
+.form-check {
+    background-color: black;
+    color: aqua;
+    font-weight: bold;
+    border-style:solid;
+    border-width:3px; 
+    padding-bottom: -30px;
+    padding-top: 5px;
+    margin-bottom: 5px;
+    width: 338%;
+    margin-left: -140px;
+    
+}
+
+.form-check-label {
+margin-bottom: 5px;
 }
 
 .display{
     width: fit-content;
     margin: 10px auto;
     text-align: center;
+    background-color: black;
+    color: black;
 }
 
 .without_ampm::-webkit-datetime-edit-ampm-field {
@@ -20,4 +86,150 @@ input[type=time]::-webkit-clear-button {
     -ms-appearance:none;
     appearance: none;
     margin: -10px; 
+}
+
+
+/* display underneath header design aqua and black (timer and buttons) */
+#workoutInterval-display {
+    background-color: black;
+    color: aqua;
+    font-weight: bold;
+    border-color: aqua;
+    border-style:solid;
+    border-width:3px; 
+    padding-top: 5px; 
+    margin-bottom: 5px;
+
+} 
+
+#restInterval-display {
+    background-color: black;
+    color: aqua;
+    font-weight: bold;
+    border-color: aqua;
+    border-style:solid;
+    border-width:3px;  
+    padding-top: 5px;
+    margin-bottom: 5px;
+} 
+
+#startTimer-btn.btn.btn-primary {
+    background-color: black;
+    color: aqua;
+    padding-top: 5px;
+    border-color: aqua;
+    border-style:solid;
+    border-width:3px; 
+    width: 130px; 
+    margin-bottom: 5px;
+}
+
+#pause-btn.btn.btn-primary {
+    background-color: black;
+    color: aqua;
+    padding-top: 5px;
+    border-color: aqua;
+    border-style:solid;
+    border-width:3px;  
+    width: 130px;
+    margin-bottom: 5px;
+}
+
+#reset-btn.btn.btn-primary {
+    background-color: black;
+    color: aqua;
+    padding-top: 5px;
+    border-color: aqua;
+    border-style:solid;
+    border-width:3px;  
+    width: 130px;
+    margin-bottom: 5px;
+}
+
+#submit-btn.btn.btn-primary {
+    background-color: black;
+    color: aqua;
+    padding-top: 5px;
+    border-color: aqua;
+    border-style:solid;
+    border-width:3px;  
+    width: 338%;
+    margin-left: -140px;
+}
+
+#startTimer-btn.btn.btn-primary:hover {
+    background-color:aqua;
+    color:black;
+    padding-top: 5px;
+    border-color: black;
+    border-style:solid;
+    cursor: pointer;
+    border-width:3px; 
+    width: 130px; 
+}
+
+#pause-btn.btn.btn-primary:hover {
+    background-color:aqua;
+    color:black;
+    padding-top: 5px;
+    border-color: black;
+    border-style:solid;
+    cursor: pointer;
+    border-width:3px; 
+    cursor: pointer;
+    width: 130px; 
+}
+
+#reset-btn.btn.btn-primary:hover {
+    background-color:aqua;
+    color:black;
+    cursor: pointer;
+    padding-top: 5px;
+    border-color: black;
+    border-style:solid;
+    border-width:3px; 
+    width: 130px; 
+}
+
+#submit-btn.btn.btn-primary:hover {
+    background-color:aqua;
+    cursor: pointer;
+    color:black;
+    padding-top: 5px;
+    border-color: black;
+    border-style:solid;
+    border-width:3px; 
+    width: 338%;
+    margin-left: -140px;
+    
+}
+
+#workoutInterval-input.form-control {
+    background-color: black;
+    color: aqua;
+    font-weight: bold;
+    border-color: aqua;
+    border-style:solid;
+    border-width:3px; 
+    padding-top: 5px; 
+    width: 338%;
+    margin-left: -140px;
+}
+
+#restInterval-input.form-control {
+    background-color: black;
+    color: aqua;
+    font-weight: bold;
+    border-color: aqua;
+    border-style:solid;
+    border-width:3px;  
+    padding-top: 5px;
+    width: 338%;
+    margin-left: -140px;
+}
+
+#timeFormat.form-text.text-muted {
+    color: aqua;
+    background-color: black;
+    font-weight:bold;
 }
