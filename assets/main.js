@@ -1,20 +1,4 @@
-<<<<<<< HEAD
-//global variables
-var time;
-var clock;
-$(document).ready(function () {
-    // the timer at the top
-    function runningClock() {
-        time = moment().format("hh:mm:ss A");
-        $("#time").text(time);
-    }
-    //  Call function with setInterval
-    clock = setInterval(runningClock , 1000);
-});
-//when window loads, it initiates all the functions
-window.onload = function(){
-=======
->>>>>>> dfcee589edb5237433086c27c4373a235de85f86
+
     //click events
     $(document).on('click', "#startTimer-btn", function(){
         //starts timer
@@ -31,9 +15,6 @@ window.onload = function(){
         //pauses timer
         pause();
     })
-
-
-
 
 
     //TRIED TO FORCE INPUT FORM TO ACCEPT ONLY FOUR CHARACTERS AND INSERT A SEMICOLON BETWEEN THE FIRST AND LAST TWO CHARACTERS
@@ -199,14 +180,14 @@ var workingOut = true;
 function countdown(){
 	
 	// Conditional checker to handle user input = 00 vs non-00 case 
-	if( workoutTotalSeconds === 0 ){
-		workingOut = false;
-	}
-	else{
-		workingOut = true; 
-	}
+	// if( workoutTotalSeconds === 0 ){
+	// 	workingOut = false;
+	// }
+	// else{
+	// 	workingOut = true; 
+	// }
 
-	////////////
+    ////////////
 	
 	if (workingOut) {
 		workoutTotalSeconds--;
