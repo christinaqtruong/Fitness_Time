@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 
 //when window loads, it initiates all the functions
 window.onload = function(){
@@ -52,8 +49,7 @@ function start(){
     if(!clockRunning){
         interval = setInterval(count, 1000);
         clockRunning = true;
-=======
-<<<<<<< HEAD
+
 //global variables
 var time;
 var clock;
@@ -62,16 +58,14 @@ $(document).ready(function () {
     function runningClock() {
         time = moment().format("hh:mm:ss A");
         $("#time").text(time);
->>>>>>> master
+
     }
     //  Call function with setInterval
     clock = setInterval(runningClock , 1000);
 });
 //when window loads, it initiates all the functions
 window.onload = function(){
-=======
->>>>>>> dfcee589edb5237433086c27c4373a235de85f86
->>>>>>> 0726e8f2da531cde5cbabe3e697cb79e7d1e36c2
+
     //click events
     $(document).on('click', "#startTimer-btn", function(){
         //starts timer
@@ -345,5 +339,4 @@ timer.addEventListener('started', function (e) {
 });
 timer.addEventListener('reset', function (e) {
     $('#chronoExample .values').html(timer.getTimeValues().toString());
-});
-    
+});} 
