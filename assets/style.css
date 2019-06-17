@@ -1,3 +1,4 @@
+
 /* header with image box */
 .container {
     background-color: #000000;
@@ -232,4 +233,38 @@ input[type=time]::-webkit-clear-button {
     color: aqua;
     background-color: black;
     font-weight:bold;
+}
+
+.btnOutline {
+    background-color: black;
+    color: aqua;
+    padding-top: 5px;
+    border-color: aqua;
+    border-style:solid;
+    border-width:3px;  
+    width: 130px;
+    margin-bottom: 5px;
+}
+ /*  music searchbar */
+.btnOutline:hover {
+    background-color: aqua;
+    color: black;
+    padding-top: 5px;
+    border-color :black;
+    border-style:solid;
+    border-width:3px;  
+    width: 130px;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+
+.formControlSearch {
+    background-color: white;
+    border-color :aqua;
+    border-style:solid;
+    border-width:3px;  
+    margin-bottom: 5px;
+    padding-top: 5px;
+    color:black;
+    font-size: bold;
 }
