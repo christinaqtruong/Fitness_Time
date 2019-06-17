@@ -1,10 +1,8 @@
-//when window loads, it initiates all the functions
-window.onload = function(){
-    
     //click events
     $(document).on('click', "#startTimer-btn", function(){
         //starts timer
         start();
+        console.log("The timer has been started!");
     })
 
     $(document).on('click', "#reset-btn", function(){
@@ -13,20 +11,19 @@ window.onload = function(){
     })
 
     $(document).on('click', "#pause-btn", function(){
-        //resets timer
+        //pauses timer
         pause();
     })
 
-
 // My web app's Firebase configuration
 var firebaseConfig = {
-    apiKey: "AIzaSyBKYD8IunAzx6dTWPxw9egVjiW4odHBnFw",
-    authDomain: "fitnesstime-cqmt.firebaseapp.com",
-    databaseURL: "https://fitnesstime-cqmt.firebaseio.com",
-    projectId: "fitnesstime-cqmt",
-    storageBucket: "fitnesstime-cqmt.appspot.com",
-    messagingSenderId: "334521941866",
-    appId: "1:334521941866:web:68651ef04c47065d"
+    apiKey: "AIzaSyDTjMXFqGMoWs8zsxC5EGaTNCl2SWVb75M",
+    authDomain: "lazytimer-cqmt.firebaseapp.com",
+    databaseURL: "https://lazytimer-cqmt.firebaseio.com",
+    projectId: "lazytimer-cqmt",
+    storageBucket: "lazytimer-cqmt.appspot.com",
+    messagingSenderId: "371231626261",
+    appId: "1:371231626261:web:e616b4da860ca636"
   };
 
 // Initialize Firebase
@@ -35,25 +32,49 @@ var database = firebase.database();
 
 //clicking submit button grab input values and pushes it to firebase
 $("#submit-btn").on("click", function(event){
+    
+    console.log("The submit button was pressed")
+
+    //prevents default submit button function
     event.preventDefault();
+    
+    //variable for checking workout interval input value
+    var workoutInput = $("#workoutInterval-input").val().trim();
 
-    workoutInterval = $("#workoutInterval-input").val().trim();
-    restInterval = $("#restInterval-input").val().trim();
+    //if there is not input value, set the workout interval to 00:00 by default, else take the user input
+    if(workoutInput === ""){
+        console.log("No Workout Interval set")
+        
+        //set time to zero and set working out variable to false to prevent working out timer from decrementing during countdown function
+        workoutInterval = "00:00";
+        workingOut = false;
 
-    console.log("workoutInterval", workoutInterval);
-    console.log("restInterval", restInterval);
+    } else {
+        workoutInterval = $("#workoutInterval-input").val().trim();
+        console.log("The user has set the Workout Interval to: ", workoutInterval);
+    }
+    
+    //variable for checking workout interval input value
+    var restInput = $("#restInterval-input").val().trim();
 
+    //if there is not input value, set the rest interval to 00:00 by default, else take the user input
+    if(restInput === ""){
+        console.log("No rest Interval set")
+        restInterval = "00:00";
+    } else {
+        restInterval = $("#restInterval-input").val().trim();
+        console.log("The user has set the Rest Interval to: ", restInterval);
+    }
 
-
+    //grab the user inputs and shove it up to firebase
     database.ref().push({
         workoutInterval: workoutInterval,
         restInterval: restInterval,
         dateAdded: firebase.database.ServerValue.TIMESTAMP
     });
-});
 
-var workoutTotalSeconds;
-var restTotalSeconds;
+    
+});
 
 database.ref().on("child_added", function(snapshot){
     //stored snapshot value in a variable
