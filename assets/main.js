@@ -1,4 +1,57 @@
 <<<<<<< HEAD
+
+//when window loads, it initiates all the functions
+window.onload = function(){
+    //click events
+    $(document).on('click', "#submit-btn", function(){
+        //sends user input to firebase
+
+    })
+
+    $(document).on('click', "#startTimer-btn", function(){
+        //starts timer
+        start();
+    })
+
+    $(document).on('click', "#reset-btn", function(){
+        //resets timer
+        reset();
+    })
+
+    $(document).on('click', "#pause-btn", function(){
+        //resets timer
+        pause();
+    })
+};
+
+//variable that holds our setInterval to run the stopwatch
+var interval;
+
+//prevents clock from speeding up
+var clockRunning = false;
+var workoutInterval = 0;
+var restInterval = 0;
+
+function reset(){
+
+    //resets time to zero
+    workoutInterval = 0;
+    restInterval = 0
+
+    //reset the display
+    $('workoutInterval-display').text("00:00:00");
+    $('restInterval-display').text("00:00:00");
+
+    //stop the music
+}
+
+function start(){
+    //setInterval starts count and sets the clock to running
+    if(!clockRunning){
+        interval = setInterval(count, 1000);
+        clockRunning = true;
+=======
+<<<<<<< HEAD
 //global variables
 var time;
 var clock;
@@ -7,6 +60,7 @@ $(document).ready(function () {
     function runningClock() {
         time = moment().format("hh:mm:ss A");
         $("#time").text(time);
+>>>>>>> master
     }
     //  Call function with setInterval
     clock = setInterval(runningClock , 1000);
@@ -267,3 +321,26 @@ function reset(){
     $("#restInterval-display").text("00:00");
 
 }
+var timer = new Timer();
+$('#chronoExample .startButton').click(function () {
+    timer.start();
+});
+$('#chronoExample .pauseButton').click(function () {
+    timer.pause();
+});
+$('#chronoExample .stopButton').click(function () {
+    timer.stop();
+});
+$('#chronoExample .resetButton').click(function () {
+    timer.reset();
+});
+timer.addEventListener('secondsUpdated', function (e) {
+    $('#chronoExample .values').html(timer.getTimeValues().toString());
+});
+timer.addEventListener('started', function (e) {
+    $('#chronoExample .values').html(timer.getTimeValues().toString());
+});
+timer.addEventListener('reset', function (e) {
+    $('#chronoExample .values').html(timer.getTimeValues().toString());
+});
+    
