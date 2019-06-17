@@ -320,5 +320,3 @@ function reset(){
     $("#restInterval-display").text("00:00");
 
 }
-
-    
