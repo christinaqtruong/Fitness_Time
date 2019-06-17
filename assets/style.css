@@ -1,64 +1,235 @@
+/* header with image box */
+.container {
+    background-color: #000000;
+    color:aqua;
+    text-align: center;
+}
+div.jumbotron.jumbotron-fluid {
+    background-color: black;
+    padding-bottom: 5px;
+    padding-top: 15px;
+    border-color: aqua;
+    border-style:solid;
+    border-width:5px;  
+
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body {
+    background-color: black;
+}
+.center:hover {
+    background-color: aqua;
+    color: black;
+}
+
+h1.display-4 {
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+
+h1.display-4:hover{
+    background-color: aqua;
+    color: black;  
+}
+
 form{
     width: fit-content;
     margin: 10px auto;
+}
+
+.form-group {
+    color: aqua;
+}
+
+.form-check {
+    background-color: black;
+    color: aqua;
+    font-weight: bold;
+    border-style:solid;
+    border-width:3px; 
+    padding-bottom: -30px;
+    padding-top: 5px;
+    margin-bottom: 5px;
+    width: 338%;
+    margin-left: -140px;
+    
+}
+
+.form-check-label {
+margin-bottom: 5px;
 }
 
 .display{
     width: fit-content;
     margin: 10px auto;
     text-align: center;
-}
-a:not([href]):not([tabindex]) {
-    color:white;
-    font-weight: 600;
-	font-size: 40px;
-	font-family: Pacifico;
-}
-body{
-	background-image: url(https://cdn.wallpapersafari.com/96/39/7TB9Nd.jpg);
-}
-.navbar {
-	border: 5px solid;
-	border-color: rgb(29, 131, 29);
-    background-image: url(https://wallpapercave.com/wp/ClILpxL.jpg);
-    color:white;
-}
-.navbar:hover{
-	color:aqua;
-	/* background-image: url(https://cdn.wallpapersafari.com/82/78/zRi7sO.jpg); */
+    background-color: black;
+    color: black;
 }
 
-#button-Holder {
-    margin-top: .5rem;
-	margin-bottom: .5rem;
-	}
-.btn{
-    margin: 2px;
-	display: inline-block;
-	padding: 10px 25px;
-	font-size: 24px;
-	cursor: pointer;
-	text-align: center;
-	outline: none;
-	color:black;
-	border: none;
-	border-radius: 15px;
-	box-shadow: 0 9px rgb(226, 210, 210);
-	margin:10px;
+.without_ampm::-webkit-datetime-edit-ampm-field {
+    display: none;
 }
-.btn:hover{
-    color: pink;
-    background: green;
-}
-.flex-container{
-	display: flex;
-}
-.form-inline{
-	background-color: aqua;
-	border-color: white;
-}
-.btn-primary{
-	background-color: aqua;
+
+input[type=time]::-webkit-clear-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    -ms-appearance:none;
+    appearance: none;
+    margin: -10px; 
 }
 
 
+/* display underneath header design aqua and black (timer and buttons) */
+#workoutInterval-display {
+    background-color: black;
+    color: aqua;
+    font-weight: bold;
+    border-color: aqua;
+    border-style:solid;
+    border-width:3px; 
+    padding-top: 5px; 
+    margin-bottom: 5px;
+
+} 
+
+#restInterval-display {
+    background-color: black;
+    color: aqua;
+    font-weight: bold;
+    border-color: aqua;
+    border-style:solid;
+    border-width:3px;  
+    padding-top: 5px;
+    margin-bottom: 5px;
+} 
+
+#startTimer-btn.btn.btn-primary {
+    background-color: black;
+    color: aqua;
+    padding-top: 5px;
+    border-color: aqua;
+    border-style:solid;
+    border-width:3px; 
+    width: 130px; 
+    margin-bottom: 5px;
+}
+
+#pause-btn.btn.btn-primary {
+    background-color: black;
+    color: aqua;
+    padding-top: 5px;
+    border-color: aqua;
+    border-style:solid;
+    border-width:3px;  
+    width: 130px;
+    margin-bottom: 5px;
+}
+
+#reset-btn.btn.btn-primary {
+    background-color: black;
+    color: aqua;
+    padding-top: 5px;
+    border-color: aqua;
+    border-style:solid;
+    border-width:3px;  
+    width: 130px;
+    margin-bottom: 5px;
+}
+
+#submit-btn.btn.btn-primary {
+    background-color: black;
+    color: aqua;
+    padding-top: 5px;
+    border-color: aqua;
+    border-style:solid;
+    border-width:3px;  
+    width: 338%;
+    margin-left: -140px;
+}
+
+#startTimer-btn.btn.btn-primary:hover {
+    background-color:aqua;
+    color:black;
+    padding-top: 5px;
+    border-color: black;
+    border-style:solid;
+    cursor: pointer;
+    border-width:3px; 
+    width: 130px; 
+}
+
+#pause-btn.btn.btn-primary:hover {
+    background-color:aqua;
+    color:black;
+    padding-top: 5px;
+    border-color: black;
+    border-style:solid;
+    cursor: pointer;
+    border-width:3px; 
+    cursor: pointer;
+    width: 130px; 
+}
+
+#reset-btn.btn.btn-primary:hover {
+    background-color:aqua;
+    color:black;
+    cursor: pointer;
+    padding-top: 5px;
+    border-color: black;
+    border-style:solid;
+    border-width:3px; 
+    width: 130px; 
+}
+
+#submit-btn.btn.btn-primary:hover {
+    background-color:aqua;
+    cursor: pointer;
+    color:black;
+    padding-top: 5px;
+    border-color: black;
+    border-style:solid;
+    border-width:3px; 
+    width: 338%;
+    margin-left: -140px;
+    
+}
+
+#workoutInterval-input.form-control {
+    background-color: black;
+    color: aqua;
+    font-weight: bold;
+    border-color: aqua;
+    border-style:solid;
+    border-width:3px; 
+    padding-top: 5px; 
+    width: 338%;
+    margin-left: -140px;
+}
+
+#restInterval-input.form-control {
+    background-color: black;
+    color: aqua;
+    font-weight: bold;
+    border-color: aqua;
+    border-style:solid;
+    border-width:3px;  
+    padding-top: 5px;
+    width: 338%;
+    margin-left: -140px;
+}
+
+#timeFormat.form-text.text-muted {
+    color: aqua;
+    background-color: black;
+    font-weight:bold;
+}
