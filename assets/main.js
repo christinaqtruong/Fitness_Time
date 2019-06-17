@@ -37,13 +37,13 @@
 
 // My web app's Firebase configuration
 var firebaseConfig = {
-    apiKey: "AIzaSyDTjMXFqGMoWs8zsxC5EGaTNCl2SWVb75M",
-    authDomain: "lazytimer-cqmt.firebaseapp.com",
-    databaseURL: "https://lazytimer-cqmt.firebaseio.com",
-    projectId: "lazytimer-cqmt",
-    storageBucket: "lazytimer-cqmt.appspot.com",
-    messagingSenderId: "371231626261",
-    appId: "1:371231626261:web:e616b4da860ca636"
+    apiKey: "AIzaSyBKYD8IunAzx6dTWPxw9egVjiW4odHBnFw",
+    authDomain: "fitnesstime-cqmt.firebaseapp.com",
+    databaseURL: "https://fitnesstime-cqmt.firebaseio.com",
+    projectId: "fitnesstime-cqmt",
+    storageBucket: "fitnesstime-cqmt.appspot.com",
+    messagingSenderId: "334521941866",
+    appId: "1:334521941866:web:68651ef04c47065d"
   };
 
 // Initialize Firebase
@@ -206,7 +206,7 @@ function countdown(){
 	}
 	
 	//decrements rest time
-    if(!workingOut){
+    if(!workingOut && restTotalSeconds != 0){
         restTotalSeconds--;
 
         var displayRest = timeConverter(restTotalSeconds);
@@ -230,6 +230,17 @@ function countdown(){
             //enables workout timer to decrement if start is hit again
             workingOut = true;
         }
+    } else {
+        console.log("Rest timer is starting at zero.");
+        //clears the interval so that it no longer triggers the countdown function
+        clearInterval(interval);
+
+        //sets clockRunning to false so that clicking the start button will set the interval function to call the countdown function
+        clockRunning = false;
+        console.log("Is the clock still running? " + clockRunning);
+
+        //enables workout timer to decrement if start is hit again
+        workingOut = true;
     }
 }
 
