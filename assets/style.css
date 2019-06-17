@@ -9,7 +9,7 @@ form{
     text-align: center;
 }
 a:not([href]):not([tabindex]) {
-    color:yellow;
+    color:white;
     font-weight: 600;
 	font-size: 40px;
 	font-family: Pacifico;
@@ -19,21 +19,46 @@ body{
 }
 .navbar {
 	border: 5px solid;
-	border-color: rgb(91, 194, 235);
+	border-color: rgb(29, 131, 29);
     background-image: url(https://wallpapercave.com/wp/ClILpxL.jpg);
-    color:yellow;
+    color:white;
 }
 .navbar:hover{
-	color: antiquewhite;
-	background-image: url(https://cdn.wallpapersafari.com/82/78/zRi7sO.jpg);
+	color:aqua;
+	/* background-image: url(https://cdn.wallpapersafari.com/82/78/zRi7sO.jpg); */
 }
-.btn{
-	background-color: rgb(233, 135, 152);
-	color: black;
-	font-family: fantasy;
-}
+
 #button-Holder {
     margin-top: .5rem;
-    margin-bottom: .5rem;
+	margin-bottom: .5rem;
+	}
+.btn{
+    margin: 2px;
+	display: inline-block;
+	padding: 10px 25px;
+	font-size: 24px;
+	cursor: pointer;
+	text-align: center;
+	outline: none;
+	color:black;
+	border: none;
+	border-radius: 15px;
+	box-shadow: 0 9px rgb(226, 210, 210);
+	margin:10px;
 }
-    
+.btn:hover{
+    color: pink;
+    background: green;
+}
+.flex-container{
+	display: flex;
+}
+.form-inline{
+	background-color: aqua;
+	border-color: white;
+}
+.btn-primary{
+	background-color: aqua;
+}
+
+
