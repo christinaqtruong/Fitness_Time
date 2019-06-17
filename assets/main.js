@@ -1,89 +1,97 @@
-<<<<<<< HEAD
-
-//when window loads, it initiates all the functions
-window.onload = function(){
     //click events
-    $(document).on('click', "#submit-btn", function(){
-        //sends user input to firebase
-
-    })
-
     $(document).on('click', "#startTimer-btn", function(){
+        console.log("You pressed START");
+        
         //starts timer
         start();
     })
 
     $(document).on('click', "#reset-btn", function(){
+        console.log("You pressed RESET");
+
         //resets timer
         reset();
     })
 
     $(document).on('click', "#pause-btn", function(){
-        //resets timer
-        pause();
-    })
-};
-
-//variable that holds our setInterval to run the stopwatch
-var interval;
-
-//prevents clock from speeding up
-var clockRunning = false;
-var workoutInterval = 0;
-var restInterval = 0;
-
-function reset(){
-
-    //resets time to zero
-    workoutInterval = 0;
-    restInterval = 0
-
-    //reset the display
-    $('workoutInterval-display').text("00:00:00");
-    $('restInterval-display').text("00:00:00");
-
-    //stop the music
-}
-
-function start(){
-    //setInterval starts count and sets the clock to running
-    if(!clockRunning){
-        interval = setInterval(count, 1000);
-        clockRunning = true;
-=======
-<<<<<<< HEAD
-//global variables
-var time;
-var clock;
-$(document).ready(function () {
-    // the timer at the top
-    function runningClock() {
-        time = moment().format("hh:mm:ss A");
-        $("#time").text(time);
->>>>>>> master
-    }
-    //  Call function with setInterval
-    clock = setInterval(runningClock , 1000);
-});
-//when window loads, it initiates all the functions
-window.onload = function(){
-=======
->>>>>>> dfcee589edb5237433086c27c4373a235de85f86
-    //click events
-    $(document).on('click', "#startTimer-btn", function(){
-        //starts timer
-        start();
-        console.log("The timer has been started!");
-    })
-
-    $(document).on('click', "#reset-btn", function(){
-        //resets timer
-        reset();
-    })
-
-    $(document).on('click', "#pause-btn", function(){
+        console.log("You pressed PAUSE");
+        
         //pauses timer
         pause();
+    })
+
+    $(document).on('click', "div#workoutInterval-display", function(){
+        console.log("You pressed workoutInterval-display");
+        
+        var workoutForm = $("<form id='workout-form'>");
+        var newInput = $("<input type='text'>").val(timeConverter(workoutTotalSeconds));
+        workoutForm.append(newInput);
+        $("#workout-wrapper").empty().html(workoutForm);
+
+        workoutForm.on("submit", function(event) {
+            event.preventDefault();
+
+            //variable for checking workout interval input value
+            var workoutInput = newInput.val();
+            console.log("the user typed in the time: " + newInput.val());
+
+
+            // check to make sure both workoutnput and restInput have a colon
+            if (!workoutInput.length) {
+                workoutInput = timeConverter(workoutTotalSeconds);
+            }
+            else if (!workoutInput.includes(":")) {
+                console.log("User did not put in a semicolon");
+
+                workoutInput = timeConverter(workoutInput);
+                console.log(workoutInput);
+            }
+            console.log("workoutInput", workoutInput);
+    
+
+            database.ref().push({
+                workoutInterval: workoutInput,
+                restInterval: $("#restInterval-display").text(),
+                dateAdded: firebase.database.ServerValue.TIMESTAMP
+            });
+        });
+    });
+
+    $(document).on('click', "div#restInterval-display", function(){
+        console.log("You pressed restInterval-display");
+        
+        var restForm = $("<form id='rest-form'>");
+        var newInput = $("<input type='text'>").val(timeConverter(restTotalSeconds));
+        restForm.append(newInput);
+        $("#rest-wrapper").empty().html(restForm);
+
+        restForm.on("submit", function(event) {
+            event.preventDefault();
+
+                    //variable for checking workout interval input value
+            var restInput = newInput.val();
+            console.log("the user typed in the time: " + newInput.val());
+
+
+            // check to make sure both workoutnput and restInput have a colon
+            if (!restInput.length) {
+                restInput = timeConverter(restTotalSeconds);
+            }
+            else if (!restInput.includes(":")) {
+                console.log("User did not put in a semicolon");
+
+                restInput = timeConverter(restInput);
+                console.log(restInput);
+            }
+            
+            console.log("restInput", restInput);
+
+            database.ref().push({
+                workoutInterval: $("#workoutInterval-display").text(),
+                restInterval: restInput,
+                dateAdded: firebase.database.ServerValue.TIMESTAMP
+            });
+        });
     })
 
 
@@ -108,18 +116,25 @@ window.onload = function(){
 
 // My web app's Firebase configuration
 var firebaseConfig = {
-    apiKey: "AIzaSyDTjMXFqGMoWs8zsxC5EGaTNCl2SWVb75M",
-    authDomain: "lazytimer-cqmt.firebaseapp.com",
-    databaseURL: "https://lazytimer-cqmt.firebaseio.com",
-    projectId: "lazytimer-cqmt",
-    storageBucket: "lazytimer-cqmt.appspot.com",
-    messagingSenderId: "371231626261",
-    appId: "1:371231626261:web:e616b4da860ca636"
+    apiKey: "AIzaSyBKYD8IunAzx6dTWPxw9egVjiW4odHBnFw",
+    authDomain: "fitnesstime-cqmt.firebaseapp.com",
+    databaseURL: "https://fitnesstime-cqmt.firebaseio.com",
+    projectId: "fitnesstime-cqmt",
+    storageBucket: "fitnesstime-cqmt.appspot.com",
+    messagingSenderId: "334521941866",
+    appId: "1:334521941866:web:68651ef04c47065d"
   };
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 var database = firebase.database();
+
+//setInterval starts count and sets the clock to running
+var workoutTotalSeconds;
+var restTotalSeconds;
+var workoutCountdown;
+var restCountdown;
+
 
 //clicking submit button grab input values and pushes it to firebase
 $("#submit-btn").on("click", function(event){
@@ -147,6 +162,15 @@ $("#submit-btn").on("click", function(event){
     
     //variable for checking workout interval input value
     var restInput = $("#restInterval-input").val().trim();
+
+    // check to make sure both workoutnput and restInput have a colon
+    if (!workoutInput.includes(":") || !restInput.includes(":")) {
+        console.log("User did not put in a semicolon");
+        return;
+    }
+    // else if (both sides of colons are numbers for both times)
+    
+
 
     //if there is not input value, set the rest interval to 00:00 by default, else take the user input
     if(restInput === ""){
@@ -184,6 +208,7 @@ database.ref().on("child_added", function(snapshot){
     //converts minutes into seconds and adds it to seconds for total workout duration in seconds
     workoutTotalSeconds = (workoutIntervalMinutes * 60) + workoutIntervalSeconds
     console.log("These are the total workout seconds", workoutTotalSeconds);
+    workoutCountdown = workoutTotalSeconds;
 
     //splits user input by the : into minutes and seconds and turns them from string into numbers for the rest interval
     var restIntervalMinutes = parseInt(sv.restInterval.split(":")[0]);
@@ -194,13 +219,18 @@ database.ref().on("child_added", function(snapshot){
 
     //converts minutes into seconds and adds it to seconds for total rest duration in seconds
     restTotalSeconds = (restIntervalMinutes * 60) + restIntervalSeconds
-    console.log("These are the total resting seconds: ", restTotalSeconds)
+    console.log("These are the total resting seconds: ", restTotalSeconds);
+    restCountdown = restTotalSeconds;
 
     //display on HTML
-    $("#workoutInterval-display").text(sv.workoutInterval);
+    // $("#workoutInterval-display").text(sv.workoutInterval);
+    var workoutDiv = $("<div id='workoutInterval-display'>").text(sv.workoutInterval);
+    $("#workout-wrapper").empty().html(workoutDiv);
     console.log("This is the workout display: " + sv.workoutInterval);
 
-    $("#restInterval-display").text(sv.restInterval);
+    // $("#restInterval-display").text(sv.restInterval);
+    var restDiv = $("<div id='restInterval-display'>").text(sv.restInterval);
+    $("#rest-wrapper").empty().html(restDiv);
     console.log("This is the resting display: " + sv.restInterval);
 
 }, function(errorObject){
@@ -215,7 +245,6 @@ var restInterval;
 //prevents clock from speeding up
 var clockRunning = false;
 
-//setInterval starts count and sets the clock to running
 function start(){
 
     if(!clockRunning){
@@ -250,57 +279,78 @@ function timeConverter(t){
 var workingOut = true;
 
 //decrements workout interval time first, and once it hits zero, moves on to decrement the rest interval time 
-function countdown(){
-	
-	// Conditional checker to handle user input = 00 vs non-00 case 
-	if( workoutTotalSeconds === 0 ){
-		workingOut = false;
-	}
-	else{
-		workingOut = true; 
-	}
 
-	////////////
-	
-	if (workingOut) {
-		workoutTotalSeconds--;
-		console.log(workoutTotalSeconds);
+var countdown = function() {
+    if (workingOut) {
+		workoutCountdown--;
+		console.log(workoutCountdown);
 
-		var displayWorkout = timeConverter(workoutTotalSeconds);
+		var displayWorkout = timeConverter(workoutCountdown);
 		console.log("This is the total workout seconds display: " + displayWorkout);
 
 		//display the countdown
         $("#workoutInterval-display").text(displayWorkout);
-        if(workoutTotalSeconds === 0){
+        if(workoutCountdown === 0){
             workingOut = false;
         }	
 	}
 	
 	//decrements rest time
-    if(!workingOut){
-        restTotalSeconds--;
+    else if(!workingOut && restCountdown != 0){
+        restCountdown--;
 
-        var displayRest = timeConverter(restTotalSeconds);
+        var displayRest = timeConverter(restCountdown);
         console.log("This is the total rest seconds timer display: " + displayRest);
 
         //display the countdown
         $("#restInterval-display").text(displayRest);
 
+        //resets/displays previous workout timer
+        workoutCountdown = workoutTotalSeconds
+        var displayWorkout = timeConverter(workoutCountdown);
+        $("#workoutInterval-display").text(displayWorkout);
+
+
+
+
         //////////////NEED TO FIGURE OUT HOW TO INCORPORATE IF FUNCTION IF REST TOTAL SECONDS STARTS AT ZERO, IT NEEDS TO NOT DECREMENT and 
         //FIX BUG WHERE REST TIMER STARTS EXACTLY AS THE WORKOUT TIMER HITS 0
 
         //once resting time hits zero, either repeat the function or stop the timer
-        if(restTotalSeconds === 0) {
-            //clears the interval so that it no longer triggers the countdown function
-            clearInterval(interval);
+        // if(restCountdown === 0) {
+        //     //clears the interval so that it no longer triggers the countdown function
+        //     clearInterval(interval);
 
-            //sets clockRunning to false so that clicking the start button will set the interval function to call the countdown function
-            clockRunning = false;
-            console.log("Is the clock still running? " + clockRunning);
+        //     //sets clockRunning to false so that clicking the start button will set the interval function to call the countdown function
+        //     clockRunning = false;
+        //     console.log("Is the clock still running? " + clockRunning);
 
-            //enables workout timer to decrement if start is hit again
-            workingOut = true;
-        }
+        //     //enables workout timer to decrement if start is hit again
+        //     workingOut = true;
+        // }
+    } else if (!workingOut && restCountdown === 0) {
+        console.log("Rest timer is starting at zero.");
+        
+        //resets to previous timer values
+        restCountdown = restTotalSeconds
+
+        var displayRest = timeConverter(restCountdown);
+
+        $("#restInterval-display").text(displayRest);
+        
+
+        //enables workout timer to decrement if start is hit again
+        workingOut = true;
+    }
+};
+
+
+function start(){
+
+    if(!clockRunning){
+        interval = setInterval(countdown, 1000);
+        clockRunning = true;
+        console.log("Is the clock running? " + clockRunning);
     }
 }
 
@@ -308,18 +358,54 @@ function countdown(){
 function pause (){
     clearInterval(interval);
     clockRunning = false;
-    console.log("Is the clock running? " + clockRunning);
+    
+    //condition checks
+    console.log("Are we working out? " + workingOut);
+    console.log("Is the timer running? " + clockRunning);
+    console.log("What is the current work out interval? " + workoutInterval);
+    console.log("What is the current rest interval? " + restInterval);
 }
 
 function reset(){
     clearInterval(interval);
+    workoutCountdown = workoutTotalSeconds;
+    restCountdown = restTotalSeconds;
     clockRunning = false;
     workingOut = true;
-    workoutInterval = "00:00";
-    restInterval = "00:00";
-    $("#workoutInterval-display").text("00:00");
-    $("#restInterval-display").text("00:00");
+    // workoutInterval = "00:00";
+    // restInterval = "00:00";
+    $("#workoutInterval-display").text(timeConverter(workoutCountdown));
+    $("#restInterval-display").text(timeConverter(restCountdown));
 
+    //condition checks
+    console.log("Are we working out? " + workingOut);
+    console.log("Is the timer running? " + clockRunning);
+    // console.log("What is the current work out interval? " + workoutInterval);
+    // console.log("What is the current rest interval? " + restInterval);
 }
 
+<<<<<<< HEAD
+// var timer = new Timer();
+// $('#chronoExample .startButton').click(function () {
+//     timer.start();
+// });
+// $('#chronoExample .pauseButton').click(function () {
+//     timer.pause();
+// });
+// $('#chronoExample .stopButton').click(function () {
+//     timer.stop();
+// });
+// $('#chronoExample .resetButton').click(function () {
+//     timer.reset();
+// });
+// timer.addEventListener('secondsUpdated', function (e) {
+//     $('#chronoExample .values').html(timer.getTimeValues().toString());
+// });
+// timer.addEventListener('started', function (e) {
+//     $('#chronoExample .values').html(timer.getTimeValues().toString());
+// });
+// timer.addEventListener('reset', function (e) {
+//     $('#chronoExample .values').html(timer.getTimeValues().toString());
+=======
     
+>>>>>>> master
