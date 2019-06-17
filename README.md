@@ -39,3 +39,6 @@ You will be employer-competitive if you are able to:
 ## Helpful Links
 * [Agile Methodology](https://en.wikipedia.org/wiki/Agile_software_development)
 * [Git Branching](https://git-scm.com/book/en/v2/Git-Branching-Branching-Workflows)
+
+##Deployment Link:
+https://christinaqtruong.github.io/Fitness_Time/
