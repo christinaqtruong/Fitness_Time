@@ -384,6 +384,7 @@ function reset(){
     // console.log("What is the current rest interval? " + restInterval);
 }
 
+<<<<<<< HEAD
 // var timer = new Timer();
 // $('#chronoExample .startButton').click(function () {
 //     timer.start();
@@ -405,3 +406,6 @@ function reset(){
 // });
 // timer.addEventListener('reset', function (e) {
 //     $('#chronoExample .values').html(timer.getTimeValues().toString());
+=======
+    
+>>>>>>> master
