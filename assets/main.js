@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+//  HEAD
 
 //when window loads, it initiates all the functions
 window.onload = function(){
@@ -50,8 +50,7 @@ function start(){
     if(!clockRunning){
         interval = setInterval(count, 1000);
         clockRunning = true;
-=======
-<<<<<<< HEAD
+//  HEAD
 //global variables
 var time;
 var clock;
@@ -60,15 +59,15 @@ $(document).ready(function () {
     function runningClock() {
         time = moment().format("hh:mm:ss A");
         $("#time").text(time);
->>>>>>> master
+//  master
     }
     //  Call function with setInterval
     clock = setInterval(runningClock , 1000);
 });
 //when window loads, it initiates all the functions
 window.onload = function(){
-=======
->>>>>>> dfcee589edb5237433086c27c4373a235de85f86
+// ======
+ dfcee589edb5237433086c27c4373a235de85f86
     //click events
     $(document).on('click', "#startTimer-btn", function(){
         //starts timer
@@ -321,26 +320,5 @@ function reset(){
     $("#restInterval-display").text("00:00");
 
 }
-var timer = new Timer();
-$('#chronoExample .startButton').click(function () {
-    timer.start();
-});
-$('#chronoExample .pauseButton').click(function () {
-    timer.pause();
-});
-$('#chronoExample .stopButton').click(function () {
-    timer.stop();
-});
-$('#chronoExample .resetButton').click(function () {
-    timer.reset();
-});
-timer.addEventListener('secondsUpdated', function (e) {
-    $('#chronoExample .values').html(timer.getTimeValues().toString());
-});
-timer.addEventListener('started', function (e) {
-    $('#chronoExample .values').html(timer.getTimeValues().toString());
-});
-timer.addEventListener('reset', function (e) {
-    $('#chronoExample .values').html(timer.getTimeValues().toString());
-});
+
     
