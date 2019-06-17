@@ -247,7 +247,7 @@ function countdown(){
             //enables workout timer to decrement if start is hit again
             workingOut = true;
         }
-    } else {
+    } else if (!workingOut && restTotalSeconds === 0) {
         console.log("Rest timer is starting at zero.");
         //clears the interval so that it no longer triggers the countdown function
         clearInterval(interval);
