@@ -1,107 +1,176 @@
 
 //when window loads, it initiates all the functions
-window.onload = function(){
+window.onload = function () {
+
     //click events
-    $(document).on('click', "#submit-btn", function(){
-        //sends user input to firebase
-
-    })
-
-    $(document).on('click', "#startTimer-btn", function(){
+    $(document).on('click', "#startTimer-btn", function () {
         //starts timer
         start();
     })
 
-    $(document).on('click', "#reset-btn", function(){
+    $(document).on('click', "#reset-btn", function () {
         //resets timer
         reset();
     })
 
-    $(document).on('click', "#pause-btn", function(){
+    $(document).on('click', "#pause-btn", function () {
         //resets timer
         pause();
     })
-};
 
-//variable that holds our setInterval to run the stopwatch
-var interval;
 
-//prevents clock from speeding up
-var clockRunning = false;
-var workoutInterval = 0;
-var restInterval = 0;
+    // My web app's Firebase configuration
+    var firebaseConfig = {
+        apiKey: "AIzaSyBKYD8IunAzx6dTWPxw9egVjiW4odHBnFw",
+        authDomain: "fitnesstime-cqmt.firebaseapp.com",
+        databaseURL: "https://fitnesstime-cqmt.firebaseio.com",
+        projectId: "fitnesstime-cqmt",
+        storageBucket: "fitnesstime-cqmt.appspot.com",
+        messagingSenderId: "334521941866",
+        appId: "1:334521941866:web:68651ef04c47065d"
+    };
 
-function reset(){
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    var database = firebase.database();
 
-    //resets time to zero
-    workoutInterval = 0;
-    restInterval = 0
+    //clicking submit button grab input values and pushes it to firebase
+    $("#submit-btn").on("click", function (event) {
+        event.preventDefault();
 
-    //reset the display
-    $('workoutInterval-display').text("00:00:00");
-    $('restInterval-display').text("00:00:00");
+        workoutInterval = $("#workoutInterval-input").val().trim();
+        restInterval = $("#restInterval-input").val().trim();
 
-    //stop the music
-}
+        console.log("workoutInterval", workoutInterval);
+        console.log("restInterval", restInterval);
 
-function start(){
-    //setInterval starts count and sets the clock to running
-    if(!clockRunning){
-        interval = setInterval(count, 1000);
-        clockRunning = true;
-    }
-}
 
-function pause (){
-    //clearInterval stops the count and sets clock to not running
-    clearInterval(interval);
-    clockRunning = false;
-}
 
-function loopIntervals (){
-    //loops intervals if checkbox is checked
-    $('input[type=checkbox]').change(function(){
-        if($(this).is(':checked')) {
-            // Checkbox is checked loop the start function
-            start();
-        } else {
-            // Checkbox is not checked..
-        }
+        database.ref().push({
+            workoutInterval: workoutInterval,
+            restInterval: restInterval,
+            dateAdded: firebase.database.ServerValue.TIMESTAMP
+        });
     });
-}
 
-function countdown(){
-    //decrements time 
-    
-}
+    var workoutTotalSeconds;
+    var restTotalSeconds;
+
+    database.ref().on("child_added", function (snapshot) {
+        //stored snapshot value in a variable
+        var sv = snapshot.val();
+
+        console.log(sv.workoutInterval);
+        console.log(sv.restInterval);
+
+        //splits user input by the : into minutes and seconds, and turns them from string into numbers for the workout interval
+        var workoutIntervalMinutes = parseInt(sv.workoutInterval.split(":")[0]);
+        var workoutIntervalSeconds = parseInt(sv.workoutInterval.split(":")[1]);
+
+        console.log("workoutIntervalMinutes", workoutIntervalMinutes);
+        console.log("workoutIntervalSeconds", workoutIntervalSeconds);
+
+        //converts minutes into seconds and adds it to seconds for total workout duration in seconds
+        workoutTotalSeconds = (workoutIntervalMinutes * 60) + workoutIntervalSeconds
+        console.log("workoutTotalSeconds", workoutTotalSeconds);
+
+        //splits user input by the : into minutes and seconds and turns them from string into numbers for the rest interval
+        var restIntervalMinutes = parseInt(sv.restInterval.split(":")[0]);
+        var restIntervalSeconds = parseInt(sv.restInterval.split(":")[1]);
+
+        //converts minutes into seconds and adds it to seconds for total workout duration in seconds
+        restTotalSeconds = (restIntervalMinutes * 60) + workoutIntervalSeconds
+
+        //display on HTML
+        if (sv.workoutInterval) {
+            $("#workoutInterval-display").text(sv.workoutInterval);
+        }
+        if (sv.restInterval) {
+            $("#restInterval-display").text(sv.restInterval);
+        }
+    }, function (errorObject) {
+        console.log("Errors handled:" + errorObject.code);
+    });
+
+    //variable that holds our setInterval to run the stopwatch
+    var interval;
+
+    var workoutInterval;
+    var restInterval;
+
+    //prevents clock from speeding up
+    var clockRunning = false;
+
+    function reset() {
+
+        //clear timer 
+        clearInterval(interval);
+
+        //resets time to zero
+        workoutInterval = 0;
+        restInterval = 0;
+
+        //reset the display
+        $('#workoutInterval-display').text("00:00");
+        $('#restInterval-display').text("00:00");
+
+        //stop the music
+    }
+
+    function start() {
+        //setInterval starts count and sets the clock to running
+        if (!clockRunning) {
+            interval = setInterval(countdown, 1000);
+            clockRunning = true;
+        }
+    }
+
+    function pause() {
+        //clearInterval stops the count and sets clock to not running
+        clearInterval(interval);
+        clockRunning = false;
+    }
+
+    function loopIntervals() {
+        //loops intervals if checkbox is checked
+        $('input[type=checkbox]').change(function () {
+            if ($(this).is(':checked')) {
+                // Checkbox is checked loop the start function
+                start();
+            } else {
+                // Checkbox is not checked..
+            }
+        });
+    }
+
+    function timeConverter(t) {
+        var minutes = Math.floor(t / 60);
+        var seconds = t - (minutes * 60);
+
+        if (seconds < 10) {
+            seconds = "0" + seconds
+        }
+
+        if (minutes === 0) {
+            minutes = "00";
+        }
+
+        else if (minutes < 10) {
+            minutes = "0" + minutes
+        }
+
+
+        return minutes + ":" + seconds;
+    }
+
+    var workingOut = true;
+
+    function countdown() {
+        if (workingOut) {
+            //decrements workout interval time first, and once it hits zero, moves on to decrement the rest interval time 
+            workoutTotalSeconds--;
+        };};
 
 
 
-// My web app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyBKYD8IunAzx6dTWPxw9egVjiW4odHBnFw",
-    authDomain: "fitnesstime-cqmt.firebaseapp.com",
-    databaseURL: "https://fitnesstime-cqmt.firebaseio.com",
-    projectId: "fitnesstime-cqmt",
-    storageBucket: "fitnesstime-cqmt.appspot.com",
-    messagingSenderId: "334521941866",
-    appId: "1:334521941866:web:68651ef04c47065d"
-  };
-  // Initialize Firebase
- firebase.initializeApp(firebaseConfig);
-
- $("#music-button").on("click", function(event){
-    event.preventDefault()
-
-    $.ajax({
-        url: "https://api.napster.com/v2.2/artists/top",
-        method: "GET",
-        headers: {
-           'apikey':'MTlhZTJjNGUtZWYyZC00ZTkwLWI3M2UtOGJlYWM0OTQ0MmEw'
-       }
-    }).then(function(response){
-        console.log(response);
-    
-
-
-});})
+        
