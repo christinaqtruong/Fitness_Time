@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,9 +15,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
+    
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
@@ -30,42 +29,88 @@
     <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-database.js"></script>
 
-<!-- Moment.js library -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <!-- Moment.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 
-<!-- moment-duration-format plugin -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment-duration-format/1.3.0/moment-duration-format.min.js"></script>
+    <!-- moment-duration-format plugin -->
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/moment-duration-format/1.3.0/moment-duration-format.min.js"></script>
+
+    <!-- Deezer API -->
+    <script src="https://e-cdns-files.dzcdn.net/js/min/dz.js"></script>
+
+    <style>
+        body {
+            background-color: aqua;
+        }
+    </style>
 
 </head>
 
 <body>
+    <div id="dz-root"></div>
+    <div id="player" style="width:100%;" align="center"></div>
+    <br/>
+    <div id="controlers">
+     
+        <input type="button" onclick="DZ.player.playAlbum(302127); return false;" value="Play Daft Punk - Discovery"/>
+        <input type="button" onclick="DZ.player.playAlbum(301775); return false;" value="Play Daft Punk - Homework"/>
+        <br/>
+        <input type="button" onclick="DZ.player.playRadio(203); return false;" value="Play Radio"/>
+        <input type="button" onclick="DZ.player.playSmartRadio(13); return false;" value="Play Smart Radio"/>
+        
+        <br/>
+        <input type="button" onclick="DZ.player.play(); return false;" value="play"/>
+        <input type="button" onclick="DZ.player.pause(); return false;" value="pause"/>
+        <input type="button" onclick="DZ.player.prev(); return false;" value="prev"/>
+        <input type="button" onclick="DZ.player.next(); return false;" value="next"/>
+        <br/>
+        <input type="button" onclick="DZ.player.setVolume(20); return false;" value="set Volume 20"/>
+        <input type="button" onclick="DZ.player.setVolume(80); return false;" value="set Volume 80"/>
+        
+        <br/><br/><br/>
+    </div>
+    <div id="slider_seek" class="progressbarplay" style="">
+      <div class="bar" style="width: 0%;"></div>
+    </div>
+    <br/>
+    event_listener : <br/>
+    <pre id="event_listener" style="height:100px;overflow:auto;"></pre>
 
-   <style>
-       body {
-           background-color: aqua;
-       }
-    </style> 
+
+
+
+
+
 
     <!-- main header for the title with image-->
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
             <img src="assets/images/timerLogo.jpg" alt="timer logo" style="width:150px;height:150px;" class="center">
             <h1 class="display-4">FITNESS TIMER</h1>
+            <p id="time"></p>
             <div class="flex-container">
                 <form id="searchMusic" class="form-inline">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search the music here...." aria-label="Search">
+                <form id="searchGif" class="form-inline">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search the music here...."
+                        aria-label="Search">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                  </form>
-                </div>
+                </form>
+            </div>
         </div>
     </div>
 
-<!-- container for the interval displays and their buttons -->
-<div class="display">
+    <!-- container for the interval displays and their buttons -->
+    <div class="display">
 
         <!-- Displays Workout/Rest Intervals -->
-        <div id="workoutInterval-display">00:00:00</div>
-        <div id="restInterval-display">00:00:00</div>
+        <span id="workout-wrapper">
+            <div id="workoutInterval-display">00:00:00</div>
+        </span>
+        <span id="rest-wrapper">
+            <div id="restInterval-display">00:00:00</div>
+        </span>
 
         <!-- Button to start timer -->
         <button class="btn btn-primary" id="startTimer-btn">Start</button>
@@ -76,40 +121,37 @@
         <!-- Button to pause timer -->
         <button class="btn btn-primary" id="pause-btn">Pause</button>
 
-<!-- Time Picker -->
-<form>
-    
-    <!-- workout interval input form -->
-    <div class="form-group">
+        <!-- Time Picker -->
+        <!-- <form> -->
+
+        <!-- workout interval input form -->
+        <!-- <div class="form-group">
       <label for="workoutInterval">Workout Interval</label>
       <input type="text" class="form-control" id="workoutInterval-input" placeholder="00:00"><small id="timeFormat" class="form-text text-muted">(mm:ss)</small>
-    </div>
+    </div> -->
 
         <!-- rest interval input form -->
-        <div class="form-group">
+        <!-- <div class="form-group">
             <label for="restInterval">Rest Interval</label>
             <input type="text" class="form-control" id="restInterval-input" placeholder="00:00:00"> <small
                 id="timeFormat" class="form-text text-muted">(HH:mm:ss)</small>
-        </div>
+        </div> -->
 
         <!-- Check to loop the intervals until stop button is pressed -->
-        <div class="form-check">
+        <!-- <div class="form-check">
             <input type="checkbox" class="form-check-input" id="intervalLoop-input">
             <label class="form-check-label" for="intervalLoop">Check to repeat time intervals</label>
-        </div>
+        </div> -->
 
         <!-- Button to push timer data to firebase -->
-        <button type="submit" class="btn btn-primary" id="submit-btn">Submit</button>
-    </form>
+        <!-- <button type="submit" class="btn btn-primary" id="submit-btn">Submit</button>
+    </form> -->
 
 
 
-    <!-- JavaScript -->
-    <script src="./assets/main.js"></script>
-
-    <!-- jQuery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
+        <!-- JavaScript -->
+        <script src="./assets/main.js"></script>
+        <script src="./assets/api.js"></script>
 
 
 </body>
