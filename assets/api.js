@@ -1,8 +1,19 @@
+// $("#music-button").on("click", function (event) {
+//     event.preventDefault()
 
+// $.ajax({
+//   url: "https://api.napster.com/v2.2/artists/top",
+//   method: "GET",
+//   headers: {
+//     apikey: "MTlhZTJjNGUtZWYyZC00ZTkwLWI3M2UtOGJlYWM0OTQ0MmEw"
+//   }
+// }).then(function(response) {
+//   console.log(response);
+// });
 
-$(document).ready(function() {
+$(document).ready(function () {
   $("#controlers input").attr("disabled", true);
-  $("#slider_seek").click(function(evt, arg) {
+  $("#slider_seek").click(function (evt, arg) {
     var left = evt.offsetX;
     DZ.player.seek((evt.offsetX / $(this).width()) * 100);
   });
@@ -20,7 +31,7 @@ function event_listener_append() {
 function onPlayerLoaded() {
   $("#controlers input").attr("disabled", false);
   event_listener_append("player_loaded");
-  DZ.Event.subscribe("current_track", function(arg) {
+  DZ.Event.subscribe("current_track", function (arg) {
     event_listener_append(
       "current_track",
       arg.index,
@@ -29,7 +40,7 @@ function onPlayerLoaded() {
     );
   });
 
-  DZ.Event.subscribe("player_position", function(arg) {
+  DZ.Event.subscribe("player_position", function (arg) {
     event_listener_append("position", arg[0], arg[1]);
     $("#slider_seek")
       .find(".bar")
