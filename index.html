@@ -29,21 +29,22 @@
     <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-database.js"></script>
 
-<!-- Moment.js library -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <!-- Moment.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 
-<!-- moment-duration-format plugin -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment-duration-format/1.3.0/moment-duration-format.min.js"></script>
+    <!-- moment-duration-format plugin -->
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/moment-duration-format/1.3.0/moment-duration-format.min.js"></script>
 
 </head>
 
 <body>
 
-   <style>
-       body {
-           background-color: aqua;
-       }
-    </style> 
+    <style>
+        body {
+            background-color: aqua;
+        }
+    </style>
 
     <!-- main header for the title with image-->
     <div class="jumbotron jumbotron-fluid">
@@ -52,22 +53,23 @@
             <h1 class="display-4">FITNESS TIMER</h1>
             <div class="flex-container">
                 <form id="searchMusic" class="form-inline">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search the music here...." aria-label="Search">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search the music here...."
+                        aria-label="Search">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                  </form>
-                </div>
+                </form>
+            </div>
         </div>
     </div>
 
-<!-- container for the interval displays and their buttons -->
-<div class="display">
+    <!-- container for the interval displays and their buttons -->
+    <div class="display">
 
         <!-- Displays Workout/Rest Intervals -->
         <span id="workout-wrapper">
-        <div id="workoutInterval-display">00:00:00</div>
+            <div id="workoutInterval-display">00:00:00</div>
         </span>
         <span id="rest-wrapper">
-        <div id="restInterval-display">00:00:00</div>
+            <div id="restInterval-display">00:00:00</div>
         </span>
 
         <!-- Button to start timer -->
@@ -78,12 +80,25 @@
 
         <!-- Button to pause timer -->
         <button class="btn btn-primary" id="pause-btn">Pause</button>
+        <!-- Button to play Audio -->
+        <button onclick="playAudio()" type="button">Play</button>
 
-<!-- Time Picker -->
-<!-- <form> -->
-    
-    <!-- workout interval input form -->
-    <!-- <div class="form-group">
+
+        <audio id="myAudio">
+            <source
+                src="http://www.princejaypmusic.com/?gclid=Cj0KCQjw9JzoBRDjARIsAGcdIDW5YGj2_PSkmV2v3gdBMg_WMbgTQv_ywg6UmMXqjbs0jPHP8MB6otgaAgraEALw_wcB#music"
+                type="audio/ogg">
+            <source
+                src="http://www.princejaypmusic.com/?gclid=Cj0KCQjw9JzoBRDjARIsAGcdIDW5YGj2_PSkmV2v3gdBMg_WMbgTQv_ywg6UmMXqjbs0jPHP8MB6otgaAgraEALw_wcB#music"
+                type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+
+        <!-- Time Picker -->
+        <!-- <form> -->
+
+        <!-- workout interval input form -->
+        <!-- <div class="form-group">
       <label for="workoutInterval">Workout Interval</label>
       <input type="text" class="form-control" id="workoutInterval-input" placeholder="00:00"><small id="timeFormat" class="form-text text-muted">(mm:ss)</small>
     </div> -->
@@ -107,11 +122,11 @@
 
 
 
-    <!-- JavaScript -->
-    <script src="./assets/main.js"></script>
+        <!-- JavaScript -->
+        <script src="./assets/main.js"></script>
 
-    <!-- jQuery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!-- jQuery -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 
 
