@@ -238,7 +238,7 @@ input[type=time]::-webkit-clear-button {
 }
 
 .active{
-    background-color: white;
+    background-color:rgb(241, 52, 52);
 }
 
 .inactive{
