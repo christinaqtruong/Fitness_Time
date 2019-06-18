@@ -52,10 +52,10 @@
             <img src="assets/images/timerLogo.jpg" alt="timer logo" style="width:150px;height:150px;" class="center">
             <h1 class="display-4">FITNESS TIMER</h1>
             <div class="flex-container">
-                <form id="searchMusic" class="form-inline">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search the music here...."
-                        aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <!-- Button to pause timer -->
+                <button class="btn btn-primary" id="play-btn">Play</button>
+                <!-- Button to play Audio -->
+                <button class="btn btn-primary" id="pause-btn">Pause</button>
                 </form>
             </div>
         </div>
@@ -78,10 +78,6 @@
         <!-- Button to reset timer -->
         <button class="btn btn-primary" id="reset-btn">Reset</button>
 
-        <!-- Button to pause timer -->
-        <button class="btn btn-primary" id="pause-btn">Pause</button>
-        <!-- Button to play Audio -->
-        <button onclick="playAudio()" type="button">Play</button>
 
 
         <audio id="myAudio">
@@ -91,8 +87,11 @@
             <source
                 src="http://www.princejaypmusic.com/?gclid=Cj0KCQjw9JzoBRDjARIsAGcdIDW5YGj2_PSkmV2v3gdBMg_WMbgTQv_ywg6UmMXqjbs0jPHP8MB6otgaAgraEALw_wcB#music"
                 type="audio/mpeg">
-            Your browser does not support the audio element.
+
         </audio>
+
+        <!-- Time Picker -->
+        <!-- <form> -->
 
         <!-- Time Picker -->
         <!-- <form> -->
@@ -120,13 +119,14 @@
         <!-- <button type="submit" class="btn btn-primary" id="submit-btn">Submit</button>
     </form> -->
 
+        <!-- jQuery -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 
         <!-- JavaScript -->
         <script src="./assets/main.js"></script>
+        <script src="./assets/api.js"></script>
 
-        <!-- jQuery -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 
 

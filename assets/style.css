@@ -92,7 +92,7 @@ input[type=time]::-webkit-clear-button {
 
 /* display underneath header design aqua and black (timer and buttons) */
 #workoutInterval-display {
-    background-color: black;
+    /* background-color: black; */
     color: aqua;
     font-weight: bold;
     border-color: aqua;
@@ -104,7 +104,7 @@ input[type=time]::-webkit-clear-button {
 } 
 
 #restInterval-display {
-    background-color: black;
+    /* background-color: black; */
     color: aqua;
     font-weight: bold;
     border-color: aqua;
@@ -237,7 +237,14 @@ input[type=time]::-webkit-clear-button {
     font-weight:bold;
 }
 
-.btnOutline {
+.active{
+    background-color: white;
+}
+
+.inactive{
+    background-color: black;
+}
+#play-btn.btn.btn-primary {
     background-color: black;
     color: aqua;
     padding-top: 5px;
@@ -247,26 +254,14 @@ input[type=time]::-webkit-clear-button {
     width: 130px;
     margin-bottom: 5px;
 }
- /*  music searchbar */
-.btnOutline:hover {
-    background-color: aqua;
-    color: black;
-    padding-top: 5px;
-    border-color :black;
-    border-style:solid;
-    border-width:3px;  
-    width: 130px;
-    cursor: pointer;
-    margin-bottom: 5px;
-}
-
-.formControlSearch {
-    background-color: white;
-    border-color :aqua;
-    border-style:solid;
-    border-width:3px;  
-    margin-bottom: 5px;
-    padding-top: 5px;
+#play-btn.btn.btn-primary:hover {
+    background-color:aqua;
     color:black;
-    font-size: bold;
+    padding-top: 5px;
+    border-color: black;
+    border-style:solid;
+    cursor: pointer;
+    border-width:3px; 
+    cursor: pointer;
+    width: 130px; 
 }
