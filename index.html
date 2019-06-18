@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,9 +16,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    
-    <!-- jQuery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
@@ -39,39 +40,6 @@
 </head>
 
 <body>
-    <div id="dz-root"></div>
-    <div id="player" style="width:100%;" align="center"></div>
-    <br/>
-    <div id="controlers">
-     
-        <input type="button" onclick="DZ.player.playAlbum(302127); return false;" value="Play Daft Punk - Discovery"/>
-        <input type="button" onclick="DZ.player.playAlbum(301775); return false;" value="Play Daft Punk - Homework"/>
-        <br/>
-        <input type="button" onclick="DZ.player.playRadio(203); return false;" value="Play Radio"/>
-        <input type="button" onclick="DZ.player.playSmartRadio(13); return false;" value="Play Smart Radio"/>
-        
-        <br/>
-        <input type="button" onclick="DZ.player.play(); return false;" value="play"/>
-        <input type="button" onclick="DZ.player.pause(); return false;" value="pause"/>
-        <input type="button" onclick="DZ.player.prev(); return false;" value="prev"/>
-        <input type="button" onclick="DZ.player.next(); return false;" value="next"/>
-        <br/>
-        <input type="button" onclick="DZ.player.setVolume(20); return false;" value="set Volume 20"/>
-        <input type="button" onclick="DZ.player.setVolume(80); return false;" value="set Volume 80"/>
-        
-        <br/><br/><br/>
-    </div>
-    <div id="slider_seek" class="progressbarplay" style="">
-      <div class="bar" style="width: 0%;"></div>
-    </div>
-    <br/>
-    event_listener : <br/>
-    <pre id="event_listener" style="height:100px;overflow:auto;"></pre>
-
-
-
-
-
 
     <style>
         body {
@@ -84,7 +52,6 @@
         <div class="container">
             <img src="assets/images/timerLogo.jpg" alt="timer logo" style="width:150px;height:150px;" class="center">
             <h1 class="display-4">FITNESS TIMER</h1>
-            <p id="time"></p>
             <div class="flex-container">
                 <!-- Button to pause timer -->
                 <button class="btn btn-primary" id="play-btn">Play</button>
