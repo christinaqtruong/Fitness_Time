@@ -95,7 +95,7 @@ input[type=time]::-webkit-clear-button {
 
 /* display underneath header design aqua and black (timer and buttons) */
 #workoutInterval-display {
-    background-color: black;
+    /* background-color: black; */
     color: aqua;
     font-weight: bold;
     border-color: aqua;
@@ -107,7 +107,7 @@ input[type=time]::-webkit-clear-button {
 } 
 
 #restInterval-display {
-    background-color: black;
+    /* background-color: black; */
     color: aqua;
     font-weight: bold;
     border-color: aqua;
@@ -269,5 +269,12 @@ input[type=time]::-webkit-clear-button {
     margin-bottom: 5px;
     padding-top: 5px;
     color:black;
-    font-size: bold;
+    font-size: bold;    
+}   
+    .active{
+    background-color: white;
+}
+
+.inactive{
+    background-color: black;
 }
