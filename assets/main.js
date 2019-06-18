@@ -6,8 +6,8 @@
         start();
     })
 
-    $(document).on('click', "#reset-btn", function(){
-        console.log("You pressed RESET");
+    $(document).on('click', "#play-btn", function(){
+        console.log("You pressed PLAY");
 
         //resets timer
         reset();
