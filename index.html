@@ -69,6 +69,10 @@
         <input type="button" onclick="DZ.player.setVolume(80); return false;" value="set Volume 80"/>
         
         <br/><br/><br/>
+        <button id="baggio">Baggio's Button</button>
+
+        <div id="buttons"></div>
+
     </div>
     <div id="slider_seek" class="progressbarplay" style="">
       <div class="bar" style="width: 0%;"></div>
@@ -76,12 +80,6 @@
     <br/>
     event_listener : <br/>
     <pre id="event_listener" style="height:100px;overflow:auto;"></pre>
-
-
-
-
-
-
 
     <!-- main header for the title with image-->
     <div class="jumbotron jumbotron-fluid">
@@ -117,34 +115,6 @@
 
         <!-- Button to pause timer -->
         <button class="btn btn-primary" id="pause-btn">Pause</button>
-
-        <!-- Time Picker -->
-        <!-- <form> -->
-
-        <!-- workout interval input form -->
-        <!-- <div class="form-group">
-      <label for="workoutInterval">Workout Interval</label>
-      <input type="text" class="form-control" id="workoutInterval-input" placeholder="00:00"><small id="timeFormat" class="form-text text-muted">(mm:ss)</small>
-    </div> -->
-
-        <!-- rest interval input form -->
-        <!-- <div class="form-group">
-            <label for="restInterval">Rest Interval</label>
-            <input type="text" class="form-control" id="restInterval-input" placeholder="00:00:00"> <small
-                id="timeFormat" class="form-text text-muted">(HH:mm:ss)</small>
-        </div> -->
-
-        <!-- Check to loop the intervals until stop button is pressed -->
-        <!-- <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="intervalLoop-input">
-            <label class="form-check-label" for="intervalLoop">Check to repeat time intervals</label>
-        </div> -->
-
-        <!-- Button to push timer data to firebase -->
-        <!-- <button type="submit" class="btn btn-primary" id="submit-btn">Submit</button>
-    </form> -->
-
-
 
         <!-- JavaScript -->
         <script src="./assets/main.js"></script>
