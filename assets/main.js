@@ -1,98 +1,115 @@
-    //click events
-    $(document).on('click', "#startTimer-btn", function(){
-        console.log("You pressed START");
-        
-        //starts timer
-        start();
-    })
+//click events
+$(document).on('click', "#startTimer-btn", function () {
+    console.log("You pressed START");
 
-    $(document).on('click', "#play-btn", function(){
-        console.log("You pressed PLAY");
+    //starts timer
+    start();
+})
 
-        //resets timer
-        reset();
-    })
+$(document).on('click', "#play-btn", function () {
+    console.log("You pressed PLAY");
 
-    $(document).on('click', "#pause-btn", function(){
-        console.log("You pressed PAUSE");
-        
-        //pauses timer
-        pause();
-    })
+    //resets timer
+    reset();
+})
 
-    $(document).on('click', "div#workoutInterval-display", function(){
-        console.log("You pressed workoutInterval-display");
-        
-        var workoutForm = $("<form id='workout-form'>");
-        var newInput = $("<input type='text'>").val(timeConverter(workoutTotalSeconds));
-        workoutForm.append(newInput);
-        $("#workout-wrapper").empty().html(workoutForm);
+$(document).on('click', "#pause-btn", function () {
+    console.log("You pressed PAUSE");
 
-        workoutForm.on("submit", function(event) {
-            event.preventDefault();
-
-            //variable for checking workout interval input value
-            var workoutInput = newInput.val();
-            console.log("the user typed in the time: " + newInput.val());
+    //pauses timer
+    pause();
+})
 
 
-            // check to make sure both workoutnput and restInput have a colon
-            if (!workoutInput.length) {
-                workoutInput = timeConverter(workoutTotalSeconds);
-            }
-            else if (!workoutInput.includes(":")) {
-                console.log("User did not put in a semicolon");
+//clicking the workout interval display will:
+$(document).on('click', "div#workoutInterval-display", function () {
+    console.log("You pressed workoutInterval-display");
 
-                workoutInput = timeConverter(workoutInput);
-                console.log(workoutInput);
-            }
-            console.log("workoutInput", workoutInput);
-    
+    //create an input form at the workout display divider location
+    var workoutForm = $("<form id='workout-form'>");
 
-            database.ref().push({
-                workoutInterval: workoutInput,
-                restInterval: $("#restInterval-display").text(),
-                dateAdded: firebase.database.ServerValue.TIMESTAMP
-            });
+    //create an input divider with a value of the previous time properly formatted
+    var newInput = $("<input type='text'>").val(timeConverter(workoutTotalSeconds));
+
+    //append the input divider to the workout form and stick it where the previous display was after emptying it
+    workoutForm.append(newInput);
+    $("#workout-wrapper").empty().html(workoutForm);
+
+    workoutForm.on("submit", function (event) {
+        event.preventDefault();
+
+        //variable for checking workout interval input value
+        var workoutInput = newInput.val();
+        console.log("the user typed in the time: " + newInput.val());
+
+
+        // checks the value of the user input's length. If zero, set it to be the previous formatted workout time
+        if (!workoutInput.length) {
+            workoutInput = timeConverter(workoutTotalSeconds);
+        }
+        //if it is not zero, but does not have a semicolon, take the time as seconds and format it to mins/secs
+        else if (!workoutInput.includes(":")) {
+            console.log("User did not put in a semicolon");
+
+            workoutInput = timeConverter(workoutInput);
+            console.log(workoutInput);
+        }
+        console.log("workoutInput", workoutInput);
+
+
+        database.ref().push({
+            workoutInterval: workoutInput,
+            restInterval: $("#restInterval-display").text(),
+            dateAdded: firebase.database.ServerValue.TIMESTAMP
         });
     });
+});
 
-    $(document).on('click', "div#restInterval-display", function(){
-        console.log("You pressed restInterval-display");
-        
-        var restForm = $("<form id='rest-form'>");
-        var newInput = $("<input type='text'>").val(timeConverter(restTotalSeconds));
-        restForm.append(newInput);
-        $("#rest-wrapper").empty().html(restForm);
+//whenever the divider with the restInterval-display ID is clicked, initiate:
+$(document).on('click', "div#restInterval-display", function () {
+    console.log("You pressed restInterval-display");
 
-        restForm.on("submit", function(event) {
-            event.preventDefault();
+    //create a form
+    var restForm = $("<form id='rest-form'>");
 
-                    //variable for checking workout interval input value
-            var restInput = newInput.val();
-            console.log("the user typed in the time: " + newInput.val());
+    //create an input form with the value of the previous restTotalSeconds formatted back into mins/secs
+    var newInput = $("<input type='text'>").val(timeConverter(restTotalSeconds));
+
+    //append the input form to the form divider and insert them onto the html page where the display was
+    restForm.append(newInput);
+    $("#rest-wrapper").empty().html(restForm);
+
+    //when the form is submitted:
+    restForm.on("submit", function (event) {
+        event.preventDefault();
+
+        //variable holds the input value
+        var restInput = newInput.val();
+        console.log("the user typed in the time: " + newInput.val());
 
 
-            // check to make sure both workoutnput and restInput have a colon
-            if (!restInput.length) {
-                restInput = timeConverter(restTotalSeconds);
-            }
-            else if (!restInput.includes(":")) {
-                console.log("User did not put in a semicolon");
+        // check to make sure rest input length is not zero, if it is, then just set the time to the previous input
+        if (!restInput.length) {
+            restInput = timeConverter(restTotalSeconds);
+        }
+        //if the length is not zero, check for a semicolon. If there is not semicolon, set the time to the input as seconds converted to mins/secs by the time converter
+        else if (!restInput.includes(":")) {
+            console.log("User did not put in a semicolon");
 
-                restInput = timeConverter(restInput);
-                console.log(restInput);
-            }
-            
-            console.log("restInput", restInput);
+            restInput = timeConverter(restInput);
+            console.log(restInput);
+        }
 
-            database.ref().push({
-                workoutInterval: $("#workoutInterval-display").text(),
-                restInterval: restInput,
-                dateAdded: firebase.database.ServerValue.TIMESTAMP
-            });
+        console.log("restInput", restInput);
+
+        //then push the interval time to the database, using the previous workout display string and the new rest input value
+        database.ref().push({
+            workoutInterval: $("#workoutInterval-display").text(),
+            restInterval: restInput,
+            dateAdded: firebase.database.ServerValue.TIMESTAMP
         });
-    })
+    });
+})
 
 
 // My web app's Firebase configuration
@@ -104,7 +121,7 @@ var firebaseConfig = {
     storageBucket: "fitnesstime-cqmt.appspot.com",
     messagingSenderId: "334521941866",
     appId: "1:334521941866:web:68651ef04c47065d"
-  };
+};
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
@@ -117,70 +134,71 @@ var workoutCountdown;
 var restCountdown;
 
 
-//clicking submit button grab input values and pushes it to firebase
-$("#submit-btn").on("click", function (event) {
+// //clicking submit button grab input values and pushes it to firebase
+// $("#submit-btn").on("click", function(event){
 
-    console.log("The submit button was pressed")
+//     console.log("The submit button was pressed")
 
-    //prevents default submit button function
-    event.preventDefault();
+//     //prevents default submit button function
+//     event.preventDefault();
 
-    //variable for checking workout interval input value
-    var workoutInput = $("#workoutInterval-input").val().trim();
+//     //variable for checking workout interval input value
+//     var workoutInput = $("#workoutInterval-input").val().trim();
 
-    //if there is not input value, set the workout interval to 00:00 by default, else take the user input
-    if (workoutInput === "") {
-        console.log("No Workout Interval set")
+//     //if there is not input value, set the workout interval to 00:00 by default, else take the user input
+//     if(workoutInput === ""){
+//         console.log("No Workout Interval set")
 
-        //set time to zero and set working out variable to false to prevent working out timer from decrementing during countdown function
-        workoutInterval = "00:00";
-        workingOut = false;
+//         //set time to zero and set working out variable to false to prevent working out timer from decrementing during countdown function
+//         workoutInterval = "00:00";
+//         workingOut = false;
 
-    } else {
-        workoutInterval = $("#workoutInterval-input").val().trim();
-        console.log("The user has set the Workout Interval to: ", workoutInterval);
-    }
+//     } else {
+//         workoutInterval = $("#workoutInterval-input").val().trim();
+//         console.log("The user has set the Workout Interval to: ", workoutInterval);
+//     }
 
-    //variable for checking workout interval input value
-    var restInput = $("#restInterval-input").val().trim();
+//     //variable for checking workout interval input value
+//     var restInput = $("#restInterval-input").val().trim();
 
-    // check to make sure both workoutnput and restInput have a colon
-    if (!workoutInput.includes(":") || !restInput.includes(":")) {
-        console.log("User did not put in a semicolon");
-        return;
-    }
-    
-
-
-    //if there is not input value, set the rest interval to 00:00 by default, else take the user input
-    if (restInput === "") {
-        console.log("No rest Interval set")
-        restInterval = "00:00";
-    } else {
-        restInterval = $("#restInterval-input").val().trim();
-        console.log("The user has set the Rest Interval to: ", restInterval);
-    }
-
-    //grab the user inputs and shove it up to firebase
-    database.ref().push({
-        workoutInterval: workoutInterval,
-        restInterval: restInterval,
-        dateAdded: firebase.database.ServerValue.TIMESTAMP
-    });
+//     // check to make sure both workoutnput and restInput have a colon
+//     if (!workoutInput.includes(":") || !restInput.includes(":")) {
+//         console.log("User did not put in a semicolon");
+//         return;
+//     }
 
 
-});
 
+// //if there is not input value, set the rest interval to 00:00 by default, else take the user input
+// if(restInput === ""){
+//     console.log("No rest interval set. Default rest interval is: " + restInterval);
+//     restInterval = "00:00";
+// } else {
+//     restInterval = $("#restInterval-input").val().trim();
+//     console.log("The user has set the Rest Interval to: ", restInterval);
+// }
+
+// //grab the user inputs and shove it up to firebase
+// database.ref().push({
+//     workoutInterval: workoutInterval,
+//     restInterval: restInterval,
+//     dateAdded: firebase.database.ServerValue.TIMESTAMP
+// });
+
+
+// });
+
+//whenever data is pushed up to the database, initiate...
 database.ref().on("child_added", function (snapshot) {
     //stored snapshot value in a variable
     var sv = snapshot.val();
 
-    
+
     //splits user input by the : into minutes and seconds, and turns them from string into numbers for the workout interval
     var workoutIntervalMinutes = parseInt(sv.workoutInterval.split(":")[0]);
     var workoutIntervalSeconds = parseInt(sv.workoutInterval.split(":")[1]);
 
-    
+
     //converts minutes into seconds and adds it to seconds for total workout duration in seconds
     workoutTotalSeconds = (workoutIntervalMinutes * 60) + workoutIntervalSeconds
     workoutCountdown = workoutTotalSeconds;
@@ -188,7 +206,7 @@ database.ref().on("child_added", function (snapshot) {
     //splits user input by the : into minutes and seconds and turns them from string into numbers for the rest interval
     var restIntervalMinutes = parseInt(sv.restInterval.split(":")[0]);
     var restIntervalSeconds = parseInt(sv.restInterval.split(":")[1]);
-    
+
 
     //converts minutes into seconds and adds it to seconds for total rest duration in seconds
     restTotalSeconds = (restIntervalMinutes * 60) + restIntervalSeconds
@@ -198,12 +216,12 @@ database.ref().on("child_added", function (snapshot) {
     // $("#workoutInterval-display").text(sv.workoutInterval);
     var workoutDiv = $("<div id='workoutInterval-display' class='inactive'>").text(sv.workoutInterval);
     $("#workout-wrapper").empty().html(workoutDiv);
-    
+
     // $("#restInterval-display").text(sv.restInterval);
     var restDiv = $("<div id='restInterval-display' class='inactive'>").text(sv.restInterval);
     $("#rest-wrapper").empty().html(restDiv);
-    
-}, function(errorObject){
+
+}, function (errorObject) {
     console.log("Errors handled:" + errorObject.code);
 });
 
@@ -215,7 +233,7 @@ var restInterval;
 //prevents clock from speeding up
 var clockRunning = false;
 
-function start(){
+function start() {
 
     if (!clockRunning) {
         interval = setInterval(countdown, 1000);
@@ -250,31 +268,42 @@ var workingOut = true;
 
 //decrements workout interval time first, and once it hits zero, moves on to decrement the rest interval time 
 
-var countdown = function() {
-    if (workingOut) {
-		workoutCountdown--;
+var countdown = function () {
+    if (workingOut && workoutCountdown != 0) {
+        workoutCountdown--;
         console.log(workoutCountdown);
         $('#workoutInterval-display').removeAttr('class');
-        $('#workoutInterval-display').attr('class','active');
+        $('#workoutInterval-display').attr('class', 'active');
 
-		var displayWorkout = timeConverter(workoutCountdown);
-		console.log("This is the total workout seconds display: " + displayWorkout);
+        var displayWorkout = timeConverter(workoutCountdown);
+        console.log("This is the total workout seconds display: " + displayWorkout);
 
-		//display the countdown
+        //display the countdown
         $("#workoutInterval-display").text(displayWorkout);
-        if(workoutCountdown === 0){
+        if (workoutCountdown === 0) {
             workingOut = false;
             $('#workoutInterval-display').removeAttr('class');
-            $('#workoutInterval-display').attr('class','inactive');
-        }	
-	}
-	
-	//decrements rest time
-    else if(!workingOut && restCountdown != 0){
+            $('#workoutInterval-display').attr('class', 'inactive');
+        }
+    } if (workingOut && workoutCountdown === 0) {
+        var displayWorkout = timeConverter(workoutCountdown);
+        console.log("This is the total workout seconds display: " + displayWorkout);
+
+        //display the countdown
+        $("#workoutInterval-display").text(displayWorkout);
+        if (workoutCountdown === 0) {
+            workingOut = false;
+            $('#workoutInterval-display').removeAttr('class');
+            $('#workoutInterval-display').attr('class', 'inactive');
+        }
+    }
+
+    //decrements rest time
+    else if (!workingOut && restCountdown != 0) {
         restCountdown--;
         $('#restInterval-display').removeAttr();
-        $('#restInterval-display').attr('class','active');
-        
+        $('#restInterval-display').attr('class', 'active');
+
         var displayRest = timeConverter(restCountdown);
         console.log("This is the total rest seconds timer display: " + displayRest);
 
@@ -289,17 +318,18 @@ var countdown = function() {
 
     } else if (!workingOut && restCountdown === 0) {
         console.log("Rest timer is starting at zero.");
-        
+
         //resets to previous timer values
         restCountdown = restTotalSeconds
+        workoutCountdown = workoutTotalSeconds
 
         var displayRest = timeConverter(restCountdown);
 
         $('#restInterval-display').removeAttr('class');
-        $('#restInterval-display').attr('class','inactive');
+        $('#restInterval-display').attr('class', 'inactive');
 
         $("#restInterval-display").text(displayRest);
-        
+
 
         //enables workout timer to decrement if start is hit again
         workingOut = true;
@@ -307,9 +337,9 @@ var countdown = function() {
 };
 
 
-function start(){
+function start() {
 
-    if(!clockRunning){
+    if (!clockRunning) {
         interval = setInterval(countdown, 1000);
         clockRunning = true;
         console.log("Is the clock running? " + clockRunning);
@@ -320,7 +350,7 @@ function start(){
 function pause() {
     clearInterval(interval);
     clockRunning = false;
-    
+
     //condition checks
     console.log("Are we working out? " + workingOut);
     console.log("Is the timer running? " + clockRunning);
