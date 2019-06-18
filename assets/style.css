@@ -73,6 +73,10 @@ margin-bottom: 5px;
     text-align: center;
     background-color: black;
     color: black;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .without_ampm::-webkit-datetime-edit-ampm-field {
