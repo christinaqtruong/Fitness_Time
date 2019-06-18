@@ -1,15 +1,3 @@
-// $("#music-button").on("click", function (event) {
-//     event.preventDefault()
-
-// $.ajax({
-//   url: "https://api.napster.com/v2.2/artists/top",
-//   method: "GET",
-//   headers: {
-//     apikey: "MTlhZTJjNGUtZWYyZC00ZTkwLWI3M2UtOGJlYWM0OTQ0MmEw"
-//   }
-// }).then(function(response) {
-//   console.log(response);
-// });
 
 $(document).ready(function() {
   $("#controlers input").attr("disabled", true);
@@ -51,7 +39,7 @@ function onPlayerLoaded() {
 DZ.init({
   appId: "354324",
   channelUrl:
-    "file:///C:/Users/chris/OneDrive/Desktop/Intro%20CS/github_projects/Fitness_Time/index.html",
+    "https://christinaqtruong.github.io/Fitness_Time/",
   player: {
     container: "player",
     width: 300,
@@ -61,3 +49,27 @@ DZ.init({
   }
 });
 
+<<<<<<< HEAD
+=======
+$("#baggio").on("click",function(){
+  console.log("test")
+  DZ.player.playRadio(37151);
+})
+
+$.ajax({
+  url: "https://cors-anywhere.herokuapp.com/https://api.deezer.com/radio/genres",
+  method: "GET"
+}).then(function(response) {
+  
+  console.log(response.data[0].radios[0].id);
+
+  for (var i = 0; i < response.data.length; i++){
+    var buttons = $('<button class="radioButtonME">').text(response.data[i].radios[0].title).attr("radio-id", response.data[i].radios[0].id);
+    $('#buttons').append(buttons);
+  }
+});
+$(document).on('click', '.radioButtonME', function(){
+  console.log("HI");
+  DZ.player.playRadio(+$(this).attr("radio-id"))
+})
+>>>>>>> 75a25de792f4bb9988fe6f81ccd9af0a0a4ca240
