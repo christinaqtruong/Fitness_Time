@@ -195,44 +195,34 @@ database.ref().on("child_added", function(snapshot){
     //stored snapshot value in a variable
     var sv = snapshot.val();
 
-    console.log("This is the Workout Interval string pulled from firebase: " + sv.workoutInterval);
-    console.log("This is the Rest Interval string pulled from firebase: " + sv.restInterval);
-
+    
     //splits user input by the : into minutes and seconds, and turns them from string into numbers for the workout interval
     var workoutIntervalMinutes = parseInt(sv.workoutInterval.split(":")[0]);
     var workoutIntervalSeconds = parseInt(sv.workoutInterval.split(":")[1]);
 
-    console.log("These are the workout minutes: ", workoutIntervalMinutes);
-    console.log("These are the workout seconds: ", workoutIntervalSeconds);
-
+    
     //converts minutes into seconds and adds it to seconds for total workout duration in seconds
     workoutTotalSeconds = (workoutIntervalMinutes * 60) + workoutIntervalSeconds
-    console.log("These are the total workout seconds", workoutTotalSeconds);
     workoutCountdown = workoutTotalSeconds;
 
     //splits user input by the : into minutes and seconds and turns them from string into numbers for the rest interval
     var restIntervalMinutes = parseInt(sv.restInterval.split(":")[0]);
     var restIntervalSeconds = parseInt(sv.restInterval.split(":")[1]);
-    console.log("These are the resting minutes: ", restIntervalMinutes)
-    console.log("These are the resting seconds: ", restIntervalSeconds)
-
+    
 
     //converts minutes into seconds and adds it to seconds for total rest duration in seconds
     restTotalSeconds = (restIntervalMinutes * 60) + restIntervalSeconds
-    console.log("These are the total resting seconds: ", restTotalSeconds);
     restCountdown = restTotalSeconds;
 
     //display on HTML
     // $("#workoutInterval-display").text(sv.workoutInterval);
     var workoutDiv = $("<div id='workoutInterval-display'>").text(sv.workoutInterval);
     $("#workout-wrapper").empty().html(workoutDiv);
-    console.log("This is the workout display: " + sv.workoutInterval);
-
+    
     // $("#restInterval-display").text(sv.restInterval);
     var restDiv = $("<div id='restInterval-display'>").text(sv.restInterval);
     $("#rest-wrapper").empty().html(restDiv);
-    console.log("This is the resting display: " + sv.restInterval);
-
+    
 }, function(errorObject){
     console.log("Errors handled:" + errorObject.code);
 });
@@ -382,4 +372,4 @@ function reset(){
     console.log("Is the timer running? " + clockRunning);
     // console.log("What is the current work out interval? " + workoutInterval);
     // console.log("What is the current rest interval? " + restInterval);
-}
+};
