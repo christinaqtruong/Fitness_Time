@@ -95,25 +95,6 @@
     })
 
 
-
-
-
-    //TRIED TO FORCE INPUT FORM TO ACCEPT ONLY FOUR CHARACTERS AND INSERT A SEMICOLON BETWEEN THE FIRST AND LAST TWO CHARACTERS
-    // $(document).keyup(function () {
-    // var workoutfield = $('#workoutInterval-input').val().split(""); 
-    // console.log(workoutfield);
-
-    // var winput = $('#workoutInterval-input').val();
-    // winput = workoutfield[0] + workoutfield[1] + ":" + workoutfield[2] + workoutfield[3];
-    // console.log(winput);
-    // $('#workoutInterval-input').text(winput);
-
-    // if (workoutfield.length > 4) {
-    //     workingoutfield.slice(0,5);
-    // }
-    // });
-
-
 // My web app's Firebase configuration
 var firebaseConfig = {
     apiKey: "AIzaSyBKYD8IunAzx6dTWPxw9egVjiW4odHBnFw",
@@ -168,7 +149,6 @@ $("#submit-btn").on("click", function(event){
         console.log("User did not put in a semicolon");
         return;
     }
-    // else if (both sides of colons are numbers for both times)
     
 
 
@@ -216,11 +196,11 @@ database.ref().on("child_added", function(snapshot){
 
     //display on HTML
     // $("#workoutInterval-display").text(sv.workoutInterval);
-    var workoutDiv = $("<div id='workoutInterval-display'>").text(sv.workoutInterval);
+    var workoutDiv = $("<div id='workoutInterval-display' class='inactive'>").text(sv.workoutInterval);
     $("#workout-wrapper").empty().html(workoutDiv);
     
     // $("#restInterval-display").text(sv.restInterval);
-    var restDiv = $("<div id='restInterval-display'>").text(sv.restInterval);
+    var restDiv = $("<div id='restInterval-display' class='inactive'>").text(sv.restInterval);
     $("#rest-wrapper").empty().html(restDiv);
     
 }, function(errorObject){
@@ -273,7 +253,9 @@ var workingOut = true;
 var countdown = function() {
     if (workingOut) {
 		workoutCountdown--;
-		console.log(workoutCountdown);
+        console.log(workoutCountdown);
+        $('#workoutInterval-display').removeAttr('class');
+        $('#workoutInterval-display').attr('class','active');
 
 		var displayWorkout = timeConverter(workoutCountdown);
 		console.log("This is the total workout seconds display: " + displayWorkout);
@@ -282,13 +264,17 @@ var countdown = function() {
         $("#workoutInterval-display").text(displayWorkout);
         if(workoutCountdown === 0){
             workingOut = false;
+            $('#workoutInterval-display').removeAttr('class');
+            $('#workoutInterval-display').attr('class','inactive');
         }	
 	}
 	
 	//decrements rest time
     else if(!workingOut && restCountdown != 0){
         restCountdown--;
-
+        $('#restInterval-display').removeAttr();
+        $('#restInterval-display').attr('class','active');
+        
         var displayRest = timeConverter(restCountdown);
         console.log("This is the total rest seconds timer display: " + displayRest);
 
@@ -301,23 +287,6 @@ var countdown = function() {
         $("#workoutInterval-display").text(displayWorkout);
 
 
-
-
-        //////////////NEED TO FIGURE OUT HOW TO INCORPORATE IF FUNCTION IF REST TOTAL SECONDS STARTS AT ZERO, IT NEEDS TO NOT DECREMENT and 
-        //FIX BUG WHERE REST TIMER STARTS EXACTLY AS THE WORKOUT TIMER HITS 0
-
-        //once resting time hits zero, either repeat the function or stop the timer
-        // if(restCountdown === 0) {
-        //     //clears the interval so that it no longer triggers the countdown function
-        //     clearInterval(interval);
-
-        //     //sets clockRunning to false so that clicking the start button will set the interval function to call the countdown function
-        //     clockRunning = false;
-        //     console.log("Is the clock still running? " + clockRunning);
-
-        //     //enables workout timer to decrement if start is hit again
-        //     workingOut = true;
-        // }
     } else if (!workingOut && restCountdown === 0) {
         console.log("Rest timer is starting at zero.");
         
@@ -325,6 +294,9 @@ var countdown = function() {
         restCountdown = restTotalSeconds
 
         var displayRest = timeConverter(restCountdown);
+
+        $('#restInterval-display').removeAttr('class');
+        $('#restInterval-display').attr('class','inactive');
 
         $("#restInterval-display").text(displayRest);
         
