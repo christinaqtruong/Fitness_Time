@@ -319,7 +319,7 @@ input[type=time]::-webkit-clear-button {
     margin-bottom: 5px;
     display: flex;
      justify-content: center;
-     float: initial;
+     float: left;
   } 
   
   .input-buttons{
@@ -332,4 +332,8 @@ input[type=time]::-webkit-clear-button {
     color:black;
     font-size: bold; 
       
+  }
+
+  .inputcontainer{
+margin: 10px;
   }
