@@ -82,8 +82,6 @@ $(document).on('click', '.radioButtonME', function(){
   console.log("HI");
   DZ.player.playRadio(+$(this).attr("radio-id"))
 })
-<<<<<<< HEAD
-=======
 
 
 // //google maps
@@ -139,4 +137,3 @@ $(document).on('click', '.radioButtonME', function(){
 //                         'Error: Your browser doesn\'t support geolocation.');
 //   infoWindow.open(map);
 // }
->>>>>>> f22b7190520e9a0768569186d4df601e6d1b6f1e
