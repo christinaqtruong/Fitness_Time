@@ -52,12 +52,8 @@
     <div id="player" style="width:100%;" align="center"></div>
     <br/>
     <div id="controlers">
-     
-        <input type="button" onclick="DZ.player.playAlbum(302127); return false;" value="Play Daft Punk - Discovery"/>
-        <input type="button" onclick="DZ.player.playAlbum(301775); return false;" value="Play Daft Punk - Homework"/>
-        <br/>
-        <input type="button" onclick="DZ.player.playRadio(203); return false;" value="Play Radio"/>
-        <input type="button" onclick="DZ.player.playSmartRadio(13); return false;" value="Play Smart Radio"/>
+
+            <div id="buttons"></div>
         
         <br/>
         <input type="button" onclick="DZ.player.play(); return false;" value="play"/>
@@ -69,17 +65,15 @@
         <input type="button" onclick="DZ.player.setVolume(80); return false;" value="set Volume 80"/>
         
         <br/><br/><br/>
-        <button id="baggio">Baggio's Button</button>
-
-        <div id="buttons"></div>
+        <button display="none" id="baggio">Baggio's Button</button>
 
     </div>
-    <div id="slider_seek" class="progressbarplay" style="">
+    <div id="slider_seek" class="progressbarplay">
       <div class="bar" style="width: 0%;"></div>
     </div>
     <br/>
-    event_listener : <br/>
-    <pre id="event_listener" style="height:100px;overflow:auto;"></pre>
+    <br/>
+    <pre id="event_listener" style="height:100px;overflow:auto;" display="none"></pre>
 
     <!-- main header for the title with image-->
     <div class="jumbotron jumbotron-fluid">
