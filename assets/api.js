@@ -75,8 +75,11 @@ $.ajax({
     var buttonfour = $('<button class="radioButtonME">').text(response.data[11].radios[0].title).attr("radio-id", response.data[11].radios[0].id);
     $('#buttons').append(buttonfour);
 
-    var buttonfive = $('<button class="radioButtonME">').text(response.data[15].radios[0].title).attr("radio-id", response.data[15].radios[01 ].id);
+    var buttonfive = $('<button class="radioButtonME">').text(response.data[15].radios[0].title).attr("radio-id", response.data[15].radios[0].id);
     $('#buttons').append(buttonfive);
+
+    var buttonsix = $('<button class="radioButtonME">').text(response.data[18].radios[0].title).attr("radio-id", response.data[18].radios[0].id);
+    $('#buttons').append(buttonsix);
 });
 $(document).on('click', '.radioButtonME', function(){
   console.log("HI");
