@@ -47,7 +47,6 @@
 
 </head>
 
-<body>
 
     <!-- main header for the title with image-->
     <div class="jumbotron jumbotron-fluid">
@@ -56,64 +55,11 @@
             <h1 class="display-4">FITNESS TIMER</h1>
             <div class="flex-container">
                     <button class="btnOutline" type="submit">Maps</button>
-                    <button class="btnOutline" type="submit">Music</button>
+                    <button class="btnOutline" type="submit">Timer</button>
             </div>
         </div>
     </div>
 
+    
     <!-- container for the interval displays and their buttons -->
     <div class="display">
-
-        <!-- Displays Workout/Rest Intervals -->
-        <span id="workout-wrapper">
-            <div id="workoutInterval-display">00:00:00</div>
-        </span>
-        <span id="rest-wrapper">
-            <div id="restInterval-display">00:00:00</div>
-        </span>
-
-        <!-- Button to start timer -->
-        <button class="btn btn-primary" id="startTimer-btn">Start</button>
-
-        <!-- Button to reset timer -->
-        <button class="btn btn-primary" id="reset-btn">Reset</button>
-
-        <!-- Button to pause timer -->
-        <button class="btn btn-primary" id="pause-btn">Pause</button>
-
-        <!--music player-->
-                
-            <div id="buttons"></div>
-            
-            <br/>
-            <input type="button" onclick="DZ.player.play(); return false;" value="play"/>
-            <input type="button" onclick="DZ.player.pause(); return false;" value="pause"/>
-            <input type="button" onclick="DZ.player.prev(); return false;" value="prev"/>
-            <input type="button" onclick="DZ.player.next(); return false;" value="next"/>
-            <br/>
-            <input type="button" onclick="DZ.player.setVolume(20); return false;" value="Lower Volume"/>
-            <input type="button" onclick="DZ.player.setVolume(80); return false;" value="Raise Volume"/>
-            
-            <br/><br/><br/>
-
-            <div id="dz-root"></div>
-        <div id="player" style="width:100%;" align="center"></div>
-        <br/>
-        <div id="controlers">
-    
-        </div>
-        <div id="slider_seek" class="progressbarplay">
-          <div class="bar" style="width: 0%;"></div>
-        </div>
-        <br/>
-        <br/>
-        <pre id="event_listener" style="height:100px;overflow:auto;" display="none"></pre>
-
-        <!-- JavaScript -->
-        <script src="./assets/main.js"></script>
-        <script src="./assets/api.js"></script>
-
-
-</body>
-
-</html>
