@@ -1,4 +1,5 @@
 
+
 $(document).ready(function() {
   $("#controlers input").attr("disabled", true);
   $("#slider_seek").click(function(evt, arg) {
@@ -62,10 +63,20 @@ $.ajax({
   
   console.log(response.data[0].radios[0].id);
 
-  for (var i = 0; i < response.data.length; i++){
-    var buttons = $('<button class="radioButtonME">').text(response.data[i].radios[0].title).attr("radio-id", response.data[i].radios[0].id);
+    var buttons = $('<button class="radioButtonME">').text(response.data[1].radios[0].title).attr("radio-id", response.data[1].radios[0].id);
     $('#buttons').append(buttons);
-  }
+
+    var buttontwo = $('<button class="radioButtonME">').text(response.data[4].radios[0].title).attr("radio-id", response.data[4].radios[0].id);
+    $('#buttons').append(buttontwo);
+   
+    var buttonthree = $('<button class="radioButtonME">').text(response.data[6].radios[0].title).attr("radio-id", response.data[6].radios[0].id);
+    $('#buttons').append(buttonthree);
+    
+    var buttonfour = $('<button class="radioButtonME">').text(response.data[11].radios[0].title).attr("radio-id", response.data[11].radios[0].id);
+    $('#buttons').append(buttonfour);
+
+    var buttonfive = $('<button class="radioButtonME">').text(response.data[15].radios[0].title).attr("radio-id", response.data[15].radios[01 ].id);
+    $('#buttons').append(buttonfive);
 });
 $(document).on('click', '.radioButtonME', function(){
   console.log("HI");

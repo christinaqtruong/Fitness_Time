@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    
+
     <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
@@ -58,16 +58,37 @@
 </head>
 
 <body>
+    <div id="dz-root"></div>
+    <div id="player" style="width:100%;" align="center"></div>
+    <br/>
+    <div id="controlers">
+
+        <div id="buttons"></div>
+        <br/>
+        <input type="button" onclick="DZ.player.play(); return false;" value="play"/>
+        <input type="button" onclick="DZ.player.pause(); return false;" value="pause"/>
+        <input type="button" onclick="DZ.player.prev(); return false;" value="prev"/>
+        <input type="button" onclick="DZ.player.next(); return false;" value="next"/>
+        <br/>
+        <input type="button" onclick="DZ.player.setVolume(20); return false;" value="set Volume 20"/>
+        <input type="button" onclick="DZ.player.setVolume(80); return false;" value="set Volume 80"/>
+        
+        <br/><br/><br/>
+        <button display="none" id="baggio">Baggio's Button</button>
+
+    </div>
+    <div id="slider_seek" class="progressbarplay">
+      <div class="bar" style="width: 0%;"></div>
+    </div>
+    <br/>
+    <br/>
+    <pre id="event_listener" style="height:100px;overflow:auto;" display="none"></pre>
 
     <!-- main header for the title with image-->
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
             <img src="assets/images/timerLogo.jpg" alt="timer logo" style="width:150px;height:150px;" class="center">
             <h1 class="display-4">FITNESS TIMER</h1>
-            <div class="flex-container">
-                    <button class="btnOutline" type="submit">Maps</button>
-                    <button class="btnOutline" type="submit">Music</button>
-            </div>
         </div>
     </div>
     
@@ -93,7 +114,7 @@
         <button class="btn btn-primary" id="pause-btn">Pause</button>
 
         <!--music player-->
-                
+<!--                 
             <div id="buttons"></div>
             
             <br/>
@@ -118,8 +139,38 @@
         </div>
         <br/>
         <br/>
-        <pre id="event_listener" style="height:100px;overflow:auto;" display="none"></pre>
+        <pre id="event_listener" style="height:100px;overflow:auto;" display="none"></pre> -->
 
+
+        <div class="flex-container">
+            <div id="dz-root"></div>
+            <div id="player" style="width:100%;" align="center"></div>
+            <br />
+            <div id="controlers"class="btn2" >
+
+                <div id="buttons" ></div>
+
+                <br />
+                <input type="button" onclick="DZ.player.play(); return false;" value="play" />
+                <input type="button" onclick="DZ.player.pause(); return false;" value="pause" />
+                <input type="button" onclick="DZ.player.prev(); return false;" value="prev" />
+                <input type="button" onclick="DZ.player.next(); return false;" value="next" />
+                <br />
+                <input type="button" onclick="DZ.player.setVolume(20); return false;" value="set Volume 20" />
+                <input type="button" onclick="DZ.player.setVolume(80); return false;" value="set Volume 80" />
+
+                <br /><br /><br />
+                <button display="none" id="baggio">Baggio's Button</button>
+
+            </div>
+            <div id="slider_seek" class="progressbarplay">
+                <div class="bar" style="width: 0%;"></div>
+            </div>
+            <br />
+            <br />
+            <pre id="event_listener" style="height:100px;overflow:auto;" display="none"></pre>
+        </div>
+        </div>
         <!-- JavaScript -->
         <script src="./assets/main.js"></script>
         <script src="./assets/api.js"></script>
