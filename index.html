@@ -39,6 +39,16 @@
     <!-- Deezer API -->
     <script src="https://e-cdns-files.dzcdn.net/js/min/dz.js"></script>
 
+    <!-- Maps JavaScript API -->
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAtjZ3M06kWHAtzMycdBNSbTWhT4KlCC5w&callback=initMap">
+    </script>
+
+    <meta-data
+    android:name="com.google.android.geo.AIzaSyAtjZ3M06kWHAtzMycdBNSbTWhT4KlCC5w"
+    android:value="AIzaSyAtjZ3M06kWHAtzMycdBNSbTWhT4KlCC5w"/>
+
+
     <style>
         body {
             background-color: aqua;
@@ -60,6 +70,7 @@
             </div>
         </div>
     </div>
+    
 
     <!-- container for the interval displays and their buttons -->
     <div class="display">
@@ -97,7 +108,7 @@
             <br/><br/><br/>
 
             <div id="dz-root"></div>
-        <div id="player" style="width:100%;" align="center"></div>
+        <div id="player" style="width:100%;" text-align="center"></div>
         <br/>
         <div id="controlers">
     
@@ -112,6 +123,9 @@
         <!-- JavaScript -->
         <script src="./assets/main.js"></script>
         <script src="./assets/api.js"></script>
+
+        <div id="map"></div>
+
 
 
 </body>

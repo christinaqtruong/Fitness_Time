@@ -101,8 +101,8 @@ input[type=time]::-webkit-clear-button {
     border-color: aqua;
     border-style:solid;
     border-width:3px; 
-    padding-top: 5px; 
-    margin-bottom: 5px;
+    padding-top: 20px; 
+    margin-bottom: 15px;
 
 } 
 
@@ -113,8 +113,8 @@ input[type=time]::-webkit-clear-button {
     border-color: aqua;
     border-style:solid;
     border-width:3px;  
-    padding-top: 5px;
-    margin-bottom: 5px;
+    padding-top: 20px;
+    margin-bottom: 15px;
 } 
 
 #startTimer-btn.btn.btn-primary {
@@ -271,10 +271,23 @@ input[type=time]::-webkit-clear-button {
     color:black;
     font-size: bold;    
 }   
-    .active{
+.active{
     background-color: white;
+    font-size: 30px;
 }
 
 .inactive{
     background-color: black;
+    font-size: 30px;
+}
+
+.rest-input {
+    font-size: 30px;
+    text-align: center;
+}
+
+.workout-input {
+    font-size: 30px;
+    text-align: center;
+
 }
