@@ -1,19 +1,8 @@
-// $("#music-button").on("click", function (event) {
-//     event.preventDefault()
 
-// $.ajax({
-//   url: "https://api.napster.com/v2.2/artists/top",
-//   method: "GET",
-//   headers: {
-//     apikey: "MTlhZTJjNGUtZWYyZC00ZTkwLWI3M2UtOGJlYWM0OTQ0MmEw"
-//   }
-// }).then(function(response) {
-//   console.log(response);
-// });
 
-$(document).ready(function () {
+$(document).ready(function() {
   $("#controlers input").attr("disabled", true);
-  $("#slider_seek").click(function (evt, arg) {
+  $("#slider_seek").click(function(evt, arg) {
     var left = evt.offsetX;
     DZ.player.seek((evt.offsetX / $(this).width()) * 100);
   });
@@ -31,7 +20,7 @@ function event_listener_append() {
 function onPlayerLoaded() {
   $("#controlers input").attr("disabled", false);
   event_listener_append("player_loaded");
-  DZ.Event.subscribe("current_track", function (arg) {
+  DZ.Event.subscribe("current_track", function(arg) {
     event_listener_append(
       "current_track",
       arg.index,
@@ -40,7 +29,7 @@ function onPlayerLoaded() {
     );
   });
 
-  DZ.Event.subscribe("player_position", function (arg) {
+  DZ.Event.subscribe("player_position", function(arg) {
     event_listener_append("position", arg[0], arg[1]);
     $("#slider_seek")
       .find(".bar")
@@ -51,7 +40,7 @@ function onPlayerLoaded() {
 DZ.init({
   appId: "354324",
   channelUrl:
-    "file:///C:/Users/chris/OneDrive/Desktop/Intro%20CS/github_projects/Fitness_Time/index.html",
+    "https://christinaqtruong.github.io/Fitness_Time/",
   player: {
     container: "player",
     width: 300,
@@ -61,3 +50,25 @@ DZ.init({
   }
 });
 
+$("#baggio").on("click",function(){
+  console.log("test")
+  DZ.player.playRadio(37151);
+})
+
+
+$.ajax({
+  url: "https://cors-anywhere.herokuapp.com/https://api.deezer.com/radio/genres",
+  method: "GET"
+}).then(function(response) {
+  
+  console.log(response.data[0].radios[0].id);
+
+  for (var i = 0; i < response.data.length; i++){
+    var buttons = $('<button class="radioButtonME">').text(response.data[i].radios[0].title).attr("radio-id", response.data[i].radios[0].id);
+    $('#buttons').append(buttons);
+  }
+});
+$(document).on('click', '.radioButtonME', function(){
+  console.log("HI");
+  DZ.player.playRadio(+$(this).attr("radio-id"))
+})
