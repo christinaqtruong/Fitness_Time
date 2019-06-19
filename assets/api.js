@@ -1,4 +1,5 @@
 
+
 $(document).ready(function() {
   $("#controlers input").attr("disabled", true);
   $("#slider_seek").click(function(evt, arg) {
@@ -49,8 +50,6 @@ DZ.init({
   }
 });
 
-<<<<<<< HEAD
-=======
 $("#baggio").on("click",function(){
   console.log("test")
   DZ.player.playRadio(37151);
@@ -72,4 +71,3 @@ $(document).on('click', '.radioButtonME', function(){
   console.log("HI");
   DZ.player.playRadio(+$(this).attr("radio-id"))
 })
->>>>>>> 75a25de792f4bb9988fe6f81ccd9af0a0a4ca240

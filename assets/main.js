@@ -1,3 +1,4 @@
+
     //click events
     $(document).on('click', "#startTimer-btn", function(){
         console.log("You pressed START");
@@ -6,8 +7,8 @@
         start();
     })
 
-    $(document).on('click', "#play-btn", function(){
-        console.log("You pressed PLAY");
+    $(document).on('click', "#reset-btn", function(){
+        console.log("You pressed RESET");
 
         //resets timer
         reset();
@@ -134,51 +135,6 @@ var workoutCountdown;
 var restCountdown;
 
 
-<<<<<<< HEAD
-//clicking submit button grab input values and pushes it to firebase
-$("#submit-btn").on("click", function (event) {
-
-    console.log("The submit button was pressed")
-
-    //prevents default submit button function
-    event.preventDefault();
-
-    //variable for checking workout interval input value
-    var workoutInput = $("#workoutInterval-input").val().trim();
-
-    //if there is not input value, set the workout interval to 00:00 by default, else take the user input
-    if (workoutInput === "") {
-        console.log("No Workout Interval set")
-
-        //set time to zero and set working out variable to false to prevent working out timer from decrementing during countdown function
-        workoutInterval = "00:00";
-        workingOut = false;
-
-    } else {
-        workoutInterval = $("#workoutInterval-input").val().trim();
-        console.log("The user has set the Workout Interval to: ", workoutInterval);
-    }
-
-    //variable for checking workout interval input value
-    var restInput = $("#restInterval-input").val().trim();
-
-    // check to make sure both workoutnput and restInput have a colon
-    if (!workoutInput.includes(":") || !restInput.includes(":")) {
-        console.log("User did not put in a semicolon");
-        return;
-    }
-    
-
-
-    //if there is not input value, set the rest interval to 00:00 by default, else take the user input
-    if (restInput === "") {
-        console.log("No rest Interval set")
-        restInterval = "00:00";
-    } else {
-        restInterval = $("#restInterval-input").val().trim();
-        console.log("The user has set the Rest Interval to: ", restInterval);
-    }
-=======
 // //clicking submit button grab input values and pushes it to firebase
 // $("#submit-btn").on("click", function(event){
     
@@ -222,7 +178,6 @@ $("#submit-btn").on("click", function (event) {
     //     restInterval = $("#restInterval-input").val().trim();
     //     console.log("The user has set the Rest Interval to: ", restInterval);
     // }
->>>>>>> 75a25de792f4bb9988fe6f81ccd9af0a0a4ca240
 
     // //grab the user inputs and shove it up to firebase
     // database.ref().push({
@@ -231,18 +186,11 @@ $("#submit-btn").on("click", function (event) {
     //     dateAdded: firebase.database.ServerValue.TIMESTAMP
     // });
 
-<<<<<<< HEAD
-
-});
-
-database.ref().on("child_added", function (snapshot) {
-=======
     
 // });
 
 //whenever data is pushed up to the database, initiate...
 database.ref().on("child_added", function(snapshot){
->>>>>>> 75a25de792f4bb9988fe6f81ccd9af0a0a4ca240
     //stored snapshot value in a variable
     var sv = snapshot.val();
 
@@ -288,7 +236,7 @@ var clockRunning = false;
 
 function start(){
 
-    if (!clockRunning) {
+    if(!clockRunning){
         interval = setInterval(countdown, 1000);
         clockRunning = true;
         console.log("Is the clock running? " + clockRunning);
@@ -296,8 +244,8 @@ function start(){
 }
 
 //converts the time from seconds into a format for display
-function timeConverter(t) {
-    var minutes = Math.floor(t / 60);
+function timeConverter(t){
+    var minutes = Math.floor(t/60);
     var seconds = t - (minutes * 60);
 
     if (seconds < 10) {
@@ -400,7 +348,7 @@ function start(){
 }
 
 //clearInterval stops the count and sets clock to not running
-function pause() {
+function pause (){
     clearInterval(interval);
     clockRunning = false;
     
@@ -411,7 +359,7 @@ function pause() {
     console.log("What is the current rest interval? " + restInterval);
 }
 
-function reset() {
+function reset(){
     clearInterval(interval);
     workoutCountdown = workoutTotalSeconds;
     restCountdown = restTotalSeconds;
