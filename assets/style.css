@@ -24,7 +24,7 @@ body {
     background-color: black;
 }
 .center:hover {
-    background-color: aqua;
+    /* background-color: aqua; */
     color: black;
 }
 
@@ -35,9 +35,9 @@ h1.display-4 {
 }
 
 
-h1.display-4:hover{
+/* h1.display-4:hover{
     background-color: aqua;
-    color: black;  
+    color: black;   */
 }
 
 form{
