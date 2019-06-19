@@ -303,37 +303,57 @@ input[type=time]::-webkit-clear-button {
 
   
   .flex-container  {
+<<<<<<< HEAD
     background-color:aqua;
     width: 300px;
      margin: 10px; 
+=======
+>>>>>>> master
     text-align: center;
   }
    .radioButtonME{
     background-color: black;
     color: aqua;
     padding-top: 5px;
+<<<<<<< HEAD
     border-color: yellow;
+=======
+    border-color: aqua;
+>>>>>>> master
     border-style:solid;
     border-width:2px;  
     width: 130px;
     margin-bottom: 5px;
     display: flex;
      justify-content: center;
+<<<<<<< HEAD
      float: left;
   } 
   
   .input-buttons{
     background-color: white;
     border-color :yellow;
+=======
+     float: initial;
+  } 
+  
+
+  .btn2{
+    background-color: black;
+    border-color :aqua;
+>>>>>>> master
     border-style:solid;
     border-width:3px;  
     margin-bottom: 5px;
     padding-top: 5px;
     color:black;
     font-size: bold; 
+<<<<<<< HEAD
       
   }
 
   .inputcontainer{
 margin: 10px;
+=======
+>>>>>>> master
   }
