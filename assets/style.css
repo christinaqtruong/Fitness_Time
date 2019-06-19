@@ -1,3 +1,4 @@
+
 /* header with image box */
 .container {
     background-color: #000000;
@@ -73,6 +74,10 @@ margin-bottom: 5px;
     text-align: center;
     background-color: black;
     color: black;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .without_ampm::-webkit-datetime-edit-ampm-field {
@@ -97,8 +102,8 @@ input[type=time]::-webkit-clear-button {
     border-color: aqua;
     border-style:solid;
     border-width:3px; 
-    padding-top: 5px; 
-    margin-bottom: 5px;
+    padding-top: 20px; 
+    margin-bottom: 15px;
 
 } 
 
@@ -109,8 +114,8 @@ input[type=time]::-webkit-clear-button {
     border-color: aqua;
     border-style:solid;
     border-width:3px;  
-    padding-top: 5px;
-    margin-bottom: 5px;
+    padding-top: 20px;
+    margin-bottom: 15px;
 } 
 
 #startTimer-btn.btn.btn-primary {
@@ -228,16 +233,152 @@ input[type=time]::-webkit-clear-button {
     margin-left: -140px;
 }
 
+
+
 #timeFormat.form-text.text-muted {
     color: aqua;
     background-color: black;
     font-weight:bold;
 }
 
+.btnOutline {
+    background-color: black;
+    color: aqua;
+    padding-top: 5px;
+    border-color: aqua;
+    border-style:solid;
+    border-width:3px;  
+    width: 130px;
+    margin-bottom: 5px;
+}
+ /*  music searchbar */
+.btnOutline:hover {
+    background-color: aqua;
+    color: black;
+    padding-top: 5px;
+    border-color :black;
+    border-style:solid;
+    border-width:3px;  
+    width: 130px;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+
+.formControlSearch {
+    background-color: white;
+    border-color :aqua;
+    border-style:solid;
+    border-width:3px;  
+    margin-bottom: 5px;
+    padding-top: 5px;
+    color:black;
+    font-size: bold;    
+}   
 .active{
     background-color: white;
+    font-size: 30px;
+    /* background-color:rgb(241, 52, 52); */
 }
 
 .inactive{
     background-color: black;
+    font-size: 30px;
 }
+
+.rest-input {
+    font-size: 30px;
+    text-align: center;
+}
+
+.workout-input {
+    font-size: 30px;
+    text-align: center;
+
+}
+
+#play-btn.btn.btn-primary {
+    background-color: black;
+    color: aqua;
+    padding-top: 5px;
+    border-color: aqua;
+    border-style:solid;
+    border-width:3px;  
+    width: 130px;
+    margin-bottom: 5px;
+}
+#play-btn.btn.btn-primary:hover {
+    background-color:aqua;
+    color:black;
+    padding-top: 5px;
+    border-color: black;
+    border-style:solid;
+    cursor: pointer;
+    border-width:3px; 
+    cursor: pointer;
+    width: 130px; 
+}
+  
+
+.btnOutline {
+    background-color: black;
+    color: aqua;
+    padding-top: 5px;
+    border-color: aqua;
+    border-style:solid;
+    border-width:3px;  
+    width: 130px;
+    margin-bottom: 5px;
+}
+ /*  music searchbar */
+.btnOutline:hover {
+    background-color: aqua;
+    color: black;
+    padding-top: 5px;
+    border-color :black;
+    border-style:solid;
+    border-width:3px;  
+    width: 130px;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+
+.formControlSearch {
+    background-color: white;
+    border-color :aqua;
+    border-style:solid;
+    border-width:3px;  
+    margin-bottom: 5px;
+    padding-top: 5px;
+    color:black;
+    font-size: bold;    
+}
+
+  
+  .flex-container  {
+    text-align: center;
+  }
+   .radioButtonME{
+    background-color: black;
+    color: aqua;
+    padding-top: 5px;
+    border-color: aqua;
+    border-style:solid;
+    border-width:2px;  
+    width: 130px;
+    margin-bottom: 5px;
+    display: flex;
+     justify-content: center;
+     float: initial;
+  } 
+  
+
+  .btn2{
+    background-color: black;
+    border-color :aqua;
+    border-style:solid;
+    border-width:3px;  
+    margin-bottom: 5px;
+    padding-top: 5px;
+    color:black;
+    font-size: bold; 
+  }

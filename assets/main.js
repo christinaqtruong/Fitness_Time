@@ -1,9 +1,55 @@
+// //click events
+// $(document).on('click', "#startTimer-btn", function(){
+//     console.log("You pressed START");
+    
+//     //starts timer
+//     start();
+// })
+
+// $(document).on('click', "#reset-btn", function(){
+//     console.log("You pressed RESET");
+
+//     //resets timer
+//     reset();
+// })
+
+// $(document).on('click', "#pause-btn", function(){
+//     console.log("You pressed PAUSE");
+    
+//     //pauses timer
+//     pause();
+// })
+
+
+
+function start(){
+    //setInterval starts count and sets the clock to running
+    if(!clockRunning){
+        interval = setInterval(count, 1000);
+        clockRunning = true;
+    }
+}
+//global variables
+var time;
+var clock;
+$(document).ready(function () {
+    // the timer at the top
+    function runningClock() {
+        time = moment().format("hh:mm:ss A");
+        $("#time").text(time);
+
+    }
+    //  Call function with setInterval
+    clock = setInterval(runningClock , 1000);
+});
+//when window loads, it initiates all the functions
+window.onload = function(){
+
     //click events
     $(document).on('click', "#startTimer-btn", function(){
-        console.log("You pressed START");
-        
         //starts timer
         start();
+        console.log("The timer has been started!");
     })
 
     $(document).on('click', "#reset-btn", function(){
@@ -146,7 +192,7 @@
             });
         });
     })
-
+}
 
 // My web app's Firebase configuration
 var firebaseConfig = {
@@ -355,4 +401,4 @@ function reset(){
     console.log("Is the timer running? " + clockRunning);
     // console.log("What is the current work out interval? " + workoutInterval);
     // console.log("What is the current rest interval? " + restInterval);
-};
+}
