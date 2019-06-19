@@ -39,6 +39,16 @@
     <!-- Deezer API -->
     <script src="https://e-cdns-files.dzcdn.net/js/min/dz.js"></script>
 
+    <!-- Maps JavaScript API -->
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAtjZ3M06kWHAtzMycdBNSbTWhT4KlCC5w&callback=initMap">
+    </script>
+
+    <meta-data
+    android:name="com.google.android.geo.AIzaSyAtjZ3M06kWHAtzMycdBNSbTWhT4KlCC5w"
+    android:value="AIzaSyAtjZ3M06kWHAtzMycdBNSbTWhT4KlCC5w"/>
+
+
     <style>
         body {
             background-color: aqua;
@@ -48,6 +58,35 @@
 </head>
 
 <body>
+<<<<<<< HEAD
+=======
+    <div id="dz-root"></div>
+    <div id="player" style="width:100%;" align="center"></div>
+    <br/>
+    <div id="controlers">
+
+            <div id="buttons"></div>
+        
+        <br/>
+        <input type="button" onclick="DZ.player.play(); return false;" value="play"/>
+        <input type="button" onclick="DZ.player.pause(); return false;" value="pause"/>
+        <input type="button" onclick="DZ.player.prev(); return false;" value="prev"/>
+        <input type="button" onclick="DZ.player.next(); return false;" value="next"/>
+        <br/>
+        <input type="button" onclick="DZ.player.setVolume(20); return false;" value="set Volume 20"/>
+        <input type="button" onclick="DZ.player.setVolume(80); return false;" value="set Volume 80"/>
+        
+        <br/><br/><br/>
+        <button display="none" id="baggio">Baggio's Button</button>
+
+    </div>
+    <div id="slider_seek" class="progressbarplay">
+      <div class="bar" style="width: 0%;"></div>
+    </div>
+    <br/>
+    <br/>
+    <pre id="event_listener" style="height:100px;overflow:auto;" display="none"></pre>
+>>>>>>> f22b7190520e9a0768569186d4df601e6d1b6f1e
 
     <!-- main header for the title with image-->
     <div class="jumbotron jumbotron-fluid">
@@ -57,6 +96,7 @@
 
         </div>
     </div>
+    
 
     <!-- container for the interval displays and their buttons -->
     <div class="display">
@@ -110,6 +150,9 @@
         <!-- JavaScript -->
         <script src="./assets/main.js"></script>
         <script src="./assets/api.js"></script>
+
+        <div id="map"></div>
+
 
 
 </body>
