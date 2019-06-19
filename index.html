@@ -7,14 +7,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Fitness Time</title>
 
-    <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="./assets/style.css">
-
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="./assets/style.css">
 
     <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -58,6 +58,7 @@
 </head>
 
 <body>
+<<<<<<< HEAD
 
     <div id="dz-root"></div>
     <div id="player" style="width:100%;" align="center"></div>
@@ -79,13 +80,18 @@
         <button display="none" id="baggio">Baggio's Button</button>
 
     </div>
+=======
+>>>>>>> master
     <div id="slider_seek" class="progressbarplay">
       <div class="bar" style="width: 0%;"></div>
     </div>
     <br/>
     <br/>
     <pre id="event_listener" style="height:100px;overflow:auto;" display="none"></pre>
+<<<<<<< HEAD
 >>>>>>> f22b7190520e9a0768569186d4df601e6d1b6f1e
+>>>>>>> master
+=======
 >>>>>>> master
 
     <!-- main header for the title with image-->
@@ -93,7 +99,6 @@
         <div class="container">
             <img src="assets/images/timerLogo.jpg" alt="timer logo" style="width:150px;height:150px;" class="center">
             <h1 class="display-4">FITNESS TIMER</h1>
-
         </div>
     </div>
     
@@ -102,9 +107,12 @@
     <div class="display">
 
         <!-- Displays Workout/Rest Intervals -->
+        <div class="workoutname">Workout Interval</div>
         <span id="workout-wrapper">
             <div id="workoutInterval-display">00:00:00</div>
         </span>
+
+        <div class="restname">Rest Interval</div>
         <span id="rest-wrapper">
             <div id="restInterval-display">00:00:00</div>
         </span>
@@ -118,13 +126,42 @@
         <!-- Button to pause timer -->
         <button class="btn btn-primary" id="pause-btn">Pause</button>
 
-        <div class="flex-container">
+        <!--music player-->
+<!--                 
+            <div id="buttons"></div>
+            
+            <br/>
+            <input type="button" onclick="DZ.player.play(); return false;" value="play"/>
+            <input type="button" onclick="DZ.player.pause(); return false;" value="pause"/>
+            <input type="button" onclick="DZ.player.prev(); return false;" value="prev"/>
+            <input type="button" onclick="DZ.player.next(); return false;" value="next"/>
+            <br/>
+            <input type="button" onclick="DZ.player.setVolume(20); return false;" value="Lower Volume"/>
+            <input type="button" onclick="DZ.player.setVolume(80); return false;" value="Raise Volume"/>
+            
+            <br/><br/><br/>
+
             <div id="dz-root"></div>
-            <div id="player" style="width:100%;" align="center"></div>
+        <div id="player" style="width:100%;" text-align="center"></div>
+        <br/>
+        <div id="controlers">
+    
+        </div>
+        <div id="slider_seek" class="progressbarplay">
+          <div class="bar" style="width: 0%;"></div>
+        </div>
+        <br/>
+        <br/>
+        <pre id="event_listener" style="height:100px;overflow:auto;" display="none"></pre> -->
+
+
+        <div class="flex-container">
             <br />
             <div id="controlers"class="btn2" >
+                <div class="music">Music</div>
 
                 <div id="buttons" ></div>
+<<<<<<< HEAD
 
                 <br />
                 <div class="inputcontainer">
@@ -144,13 +181,31 @@
                 <input type="button" onclick="DZ.player.pause(); return false;" value="pause" />
                 <input type="button" onclick="DZ.player.prev(); return false;" value="prev" />
                 <input type="button" onclick="DZ.player.next(); return false;" value="next" />
+=======
+                
+                <div class="player">
+                <div id="dz-root"></div>
+                 <div id="player" style="width:100%;" text-align="center"></div>
+                </div>
+                
+>>>>>>> master
                 <br />
-                <input type="button" onclick="DZ.player.setVolume(20); return false;" value="set Volume 20" />
-                <input type="button" onclick="DZ.player.setVolume(80); return false;" value="set Volume 80" />
 
+<<<<<<< HEAD
 
                 <br /><br /><br />
                 <button display="none" id="baggio">Baggio's Button</button>
+=======
+                <div class="buttons">
+                    <input type="button" onclick="DZ.player.play(); return false;" value="play" />
+                    <input type="button" onclick="DZ.player.pause(); return false;" value="pause" />
+                    <input type="button" onclick="DZ.player.prev(); return false;" value="prev" />
+                    <input type="button" onclick="DZ.player.next(); return false;" value="next" />
+                    <input type="button" onclick="DZ.player.setVolume(20); return false;" value="set Volume 20" />
+                    <input type="button" onclick="DZ.player.setVolume(80); return false;" value="set Volume 80" />
+                </div>
+    
+>>>>>>> master
 
             </div>
             <div id="slider_seek" class="progressbarplay">

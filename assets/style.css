@@ -74,6 +74,10 @@ margin-bottom: 5px;
     text-align: center;
     background-color: black;
     color: black;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .without_ampm::-webkit-datetime-edit-ampm-field {
@@ -98,8 +102,8 @@ input[type=time]::-webkit-clear-button {
     border-color: aqua;
     border-style:solid;
     border-width:3px; 
-    padding-top: 5px; 
-    margin-bottom: 5px;
+    padding-top: 20px; 
+    margin-bottom: 15px;
 
 } 
 
@@ -110,8 +114,8 @@ input[type=time]::-webkit-clear-button {
     border-color: aqua;
     border-style:solid;
     border-width:3px;  
-    padding-top: 5px;
-    margin-bottom: 5px;
+    padding-top: 20px;
+    margin-bottom: 15px;
 } 
 
 #startTimer-btn.btn.btn-primary {
@@ -237,13 +241,61 @@ input[type=time]::-webkit-clear-button {
     font-weight:bold;
 }
 
+.btnOutline {
+    background-color: black;
+    color: aqua;
+    padding-top: 5px;
+    border-color: aqua;
+    border-style:solid;
+    border-width:3px;  
+    width: 130px;
+    margin-bottom: 5px;
+}
+ /*  music searchbar */
+.btnOutline:hover {
+    background-color: aqua;
+    color: black;
+    padding-top: 5px;
+    border-color :black;
+    border-style:solid;
+    border-width:3px;  
+    width: 130px;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+
+.formControlSearch {
+    background-color: white;
+    border-color :aqua;
+    border-style:solid;
+    border-width:3px;  
+    margin-bottom: 5px;
+    padding-top: 5px;
+    color:black;
+    font-size: bold;    
+}   
 .active{
-    background-color:rgb(241, 52, 52);
+    background-color: white;
+    font-size: 30px;
+    /* background-color:rgb(241, 52, 52); */
 }
 
 .inactive{
     background-color: black;
+    font-size: 30px;
 }
+
+.rest-input {
+    font-size: 30px;
+    text-align: center;
+}
+
+.workout-input {
+    font-size: 30px;
+    text-align: center;
+
+}
+
 #play-btn.btn.btn-primary {
     background-color: black;
     color: aqua;
@@ -322,10 +374,10 @@ input[type=time]::-webkit-clear-button {
 >>>>>>> master
     border-style:solid;
     border-width:2px;  
-    width: 130px;
-    margin-bottom: 5px;
+    width: 140px;
     display: flex;
      justify-content: center;
+<<<<<<< HEAD
 <<<<<<< HEAD
      float: left;
   } 
@@ -335,8 +387,21 @@ input[type=time]::-webkit-clear-button {
     border-color :yellow;
 =======
      float: initial;
+=======
+     float: left;
+     margin: 5px auto;
+>>>>>>> master
   } 
   
+  input {
+    background-color: black;
+    color: aqua;
+    padding-top: 5px;
+    border-color: aqua;
+    width: 140px;
+    margin: 5px auto;
+    text-align: center;
+  }
 
   .btn2{
     background-color: black;
@@ -349,11 +414,43 @@ input[type=time]::-webkit-clear-button {
     color:black;
     font-size: bold; 
 <<<<<<< HEAD
+<<<<<<< HEAD
       
   }
 
   .inputcontainer{
 margin: 10px;
 =======
+>>>>>>> master
+=======
+  }
+
+  #dzplayer{
+margin: 0 auto;
+  }
+
+  .workoutname, .restname{
+      color: black;
+      background-color: aqua;
+      
+  }
+
+  .music{
+    color: black;
+    background-color: aqua;
+  }
+
+  #buttons{
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+  }
+
+  .buttons{
+    margin: 5px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 >>>>>>> master
   }
