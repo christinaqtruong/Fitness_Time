@@ -54,6 +54,7 @@ $("#baggio").on("click",function(){
   DZ.player.playRadio(37151);
 })
 
+
 $.ajax({
   url: "https://cors-anywhere.herokuapp.com/https://api.deezer.com/radio/genres",
   method: "GET"
